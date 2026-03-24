@@ -123,7 +123,7 @@ export default function Signup() {
               required
             />
             <span onClick={() => setShowConfirm(!showConfirm)}>
-              {showConfirm ? <FaEyeSlash /> : <FaEye />}
+              {showConfirm ? <FaEye /> : <FaEyeSlash />}
             </span>
           </div>
 

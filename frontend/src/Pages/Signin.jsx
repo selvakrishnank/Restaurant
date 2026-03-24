@@ -116,7 +116,7 @@ export default function Signin() {
             />
 
             <span onClick={() => setShowPassword(!showPassword)}>
-              {showPassword ? <FaEyeSlash /> : <FaEye />}
+              {showPassword ? <FaEye /> : <FaEyeSlash />}
             </span>
           </div>
 
