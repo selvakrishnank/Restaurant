@@ -51,10 +51,10 @@ export default function Signin() {
 
         switch (data.role) {
           case "owner":
-            navigate("/owner-dashboard");
+            navigate("/owner");
             break;
           case "manager":
-            navigate("/manager-dashboard");
+            navigate("/manager");
             break;
           case "chef":
             navigate("/kitchen");
