@@ -1,0 +1,105 @@
+.auth-container {
+  min-height: 100vh;
+  display: flex;
+  width: 1450px;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(to bottom right, #fff6ef, #f5efe6);
+  font-family: Inter, sans-serif;
+}
+
+.auth-card {
+  width: 420px;
+  background: white;
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+.logo {
+  text-align: center;
+  color: #ff6a00;
+  margin-bottom: 5px;
+}
+
+.subtitles {
+  text-align: center;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+label {
+  font-size: 14px;
+  margin-top: 10px;
+  display: block;
+  color: #333;
+}
+
+input,
+select {
+  width: 100%;
+  padding: 12px;
+  padding-right: 1px;
+  margin-top: 6px;
+  border-radius: 10px;
+  border: none;
+  background: #f4f4f4;
+  margin-bottom: 14px;
+  color: #333;
+  border: none;
+  outline: none;
+}
+
+.auth-btn {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  border: none;
+  background: #ff6a00;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.auth-btn:hover {
+  opacity: 0.9;
+}
+
+.switch-text {
+  text-align: center;
+  margin-top: 15px;
+  font-size: 14px;
+  color: #333;
+}
+
+.switch-text span {
+  color: #ff6a00;
+  cursor: pointer;
+}
+
+.password-field {
+  position: relative;
+  width: 100%;
+}
+
+.password-field input {
+  width: 100%;
+  padding: 12px 45px 12px 12px;
+  border-radius: 12px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+.password-field span {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #555;
+}
+
+.password-field span:hover {
+  color: #111;
+}

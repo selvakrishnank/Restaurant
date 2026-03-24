@@ -1,0 +1,289 @@
+/* PAGE */
+
+.floor-page{
+  padding:40px;
+  background:#f5f6fa;
+  font-family: Inter, system-ui, -apple-system, sans-serif;
+  width: 1370px;
+}
+
+.back-btn{
+display: flex;
+align-items: center;
+gap: 8px;
+cursor: pointer;
+font-size: 15px;
+font-weight: 600;
+color: #111827;
+margin-bottom: 20px;
+width: fit-content;
+}
+
+.back-btn:hover{
+opacity: 0.7;
+}
+
+.back-icon{
+font-size: 15px;
+}
+
+/* HEADER */
+
+.floor-page h2{
+  font-size:28px;
+  font-weight:700;
+  margin-bottom:6px;
+  color: #111827;
+}
+
+.subtitle{
+  color:#6b7280;
+  margin-bottom:30px;
+  margin-right: 500px;
+}
+
+
+/* ====================== */
+/* STATS */
+/* ====================== */
+
+.stats{
+  display:flex;
+  gap:20px;
+  margin-bottom:30px;
+}
+
+.card{
+  flex:1;
+  background:white;
+  padding:20px;
+  border-radius:12px;
+  box-shadow:0 2px 8px rgba(0,0,0,0.05);
+  color: #111827;
+}
+
+.card h3{
+  font-size:26px;
+  margin-bottom:4px;
+}
+
+.card p{
+  color:#6b7280;
+  font-size:14px;
+}
+
+/* colored stat cards */
+
+.card.green{
+  border-left:5px solid #22c55e;
+}
+
+.card.red{
+  border-left:5px solid #ef4444;
+}
+
+.card.yellow{
+  border-left:5px solid #f59e0b;
+}
+
+
+/* ====================== */
+/* ZONE FILTER */
+/* ====================== */
+
+.zones{
+  background:white;
+  padding:20px;
+  border-radius:12px;
+  margin-bottom:25px;
+}
+
+.zones button{
+  border:1px solid #e5e7eb;
+  padding:8px 14px;
+  border-radius:8px;
+  background:white;
+  margin-right:10px;
+  cursor:pointer;
+  font-size:14px;
+  color: #000;
+}
+
+
+.zones button.active{
+
+  background:#0f172a;
+
+  color:white;
+
+  border:none;
+
+}
+.zones button:hover{
+  background:#111827;
+  color:white;
+}
+
+
+/* ====================== */
+/* FLOOR LAYOUT */
+/* ====================== */
+
+.floor-layout{
+  margin-top:30px;
+  padding:40px;
+  border:2px dashed #cbd5e1;
+  border-radius:18px;
+
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:35px;
+
+  background:#f9fafb;
+}
+
+
+/* ====================== */
+/* TABLE */
+/* ====================== */
+
+.table{
+
+  height:110px;
+  border-radius:18px;
+
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+
+  color:white;
+  font-weight:600;
+
+  cursor:pointer;
+
+  transition:all 0.25s ease;
+
+  box-shadow:0 6px 14px rgba(0,0,0,0.08);
+
+}
+
+.table:hover{
+  transform:translateY(-4px);
+  box-shadow:0 12px 20px rgba(0,0,0,0.15);
+}
+.table h4{
+  font-size:18px;
+  margin-bottom:4px;
+}
+
+.table p{
+  font-size:15px;
+  margin:2px 0;
+}
+
+.table span{
+
+  margin-top:6px;
+
+  font-size:13px;
+
+  padding:5px 14px;
+
+  border-radius:12px;
+
+  background:rgba(255,255,255,0.25);
+
+}
+
+.table span{
+  text-transform:capitalize;
+}
+
+/* TABLE STATUS COLORS */
+
+.table.available{
+  background:#22c55e;
+}
+
+.table.occupied{
+  background:#ef4444;
+}
+
+.table.reserved{
+  background:#f59e0b;
+}
+
+
+/* ====================== */
+/* LEGEND */
+/* ====================== */
+
+/* LEGEND CARD */
+
+.legend-container{
+  margin-top:40px;
+  background:white;
+  border-radius:16px;
+  padding:30px;
+  border:1px solid #e5e7eb;
+}
+
+/* TITLE */
+
+.legend-title{
+  font-size:20px;
+  font-weight:600;
+  margin-bottom:25px;
+  color: #111827;
+}
+
+/* ITEMS ROW */
+
+.legend-items{
+  display:flex;
+  justify-content:space-between;
+}
+
+/* ITEM */
+
+.legend-item{
+  display:flex;
+  align-items:center;
+  gap:16px;
+}
+
+/* COLOR BOX */
+
+.legend-box{
+  width:50px;
+  height:50px;
+  border-radius:10px;
+}
+
+.legend-box.green{
+  background:#22c55e;
+}
+
+.legend-box.red{
+  background:#ef4444;
+}
+
+.legend-box.yellow{
+  background:#f59e0b;
+}
+
+/* TEXT */
+
+.legend-name{
+  font-size:16px;
+  font-weight:600;
+  margin:0;
+  color: #000;
+}
+
+.legend-desc{
+  font-size:14px;
+  color:#6b7280;
+  margin-top:4px;
+}

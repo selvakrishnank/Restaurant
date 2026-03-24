@@ -1,0 +1,40 @@
+.page {
+  max-width: 1400px;
+  margin-left: 100px;
+  padding: 0 60px;
+  
+}
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .page {
+    padding: 14px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .page {
+    padding: 12px;
+  }
+}
+
+.food-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .food-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .food-grid {
+    grid-template-columns: 1fr;
+  }
+}

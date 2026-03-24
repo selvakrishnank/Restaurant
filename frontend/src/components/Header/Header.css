@@ -1,0 +1,119 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;   /* ✅ center vertically */
+
+  padding: 10px 0;
+  border-bottom: 1px solid #e5e7eb;
+
+  width: 100%;
+}
+
+.header-left {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+}
+
+.header-left .logo {
+  text-align: left !important;
+}
+
+.header-left .subtitle {
+  text-align: left !important;
+}
+/* TITLE */
+.logo{
+  color: #ea580c;
+  font-size: 20px;   /* 🔥 SMALL like Figma */
+  font-weight: 600;
+  
+}
+
+/* SUBTITLE */
+.subtitle {
+  font-size: 13px;
+  color: #6b7280;
+  margin-top: 2px;
+
+  margin: 0;              /* ✅ FIX */
+  text-align: left;       /* ✅ FIX */
+}
+
+/* RIGHT */
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  
+}
+
+/* BUTTONS */
+.header-actions button {
+  padding: 8px 14px;
+  border-radius: 10px;
+  cursor: pointer;
+  border: none;
+  font-size: 13px;
+  margin-right: px;
+}
+
+/* OUTLINE BUTTON */
+.outline {
+  background: #fff;
+  border: 1px solid #ddd;
+  color: black;
+}
+
+/* CART BUTTON */
+.cart {
+  background: #ea580c;
+  color: white;
+  position: relative;
+}
+
+/* CART BADGE */
+.cart-badge {
+  margin-left: 6px;
+  font-weight: 600;
+}
+
+/* EXIT BUTTON */
+.out {
+  background: #fff;
+  border: 1px solid #ddd;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.out img {
+  width: 16px;
+  height: 16px;
+}
+
+/* 🔥 MOBILE RESPONSIVE */
+@media (max-width: 768px) {
+
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .header-actions {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .header-actions button {
+    flex: 1;
+    font-size: 13px;
+    padding: 10px;
+  }
+
+  .out {
+    flex: 0;
+    padding: 10px;
+  }
+}

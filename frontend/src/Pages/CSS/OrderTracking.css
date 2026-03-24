@@ -1,0 +1,213 @@
+/* PAGE */
+.tracking-page {
+  background: #f5f7fb;
+  min-height: 100vh;
+  padding: 40px 20px;
+  max-width: 1400px;
+  margin: auto;
+  font-family: Inter, sans-serif;
+}
+
+/* HEADER */
+.tracking-header {
+  margin-bottom: 25px;
+  color: #111827;
+  margin-left: 200px;
+}
+
+.back-btn {
+  background: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+/* CARD */
+.order-card {
+  background: white;
+  border: 2px solid #f59e0b;
+  border-radius: 18px;
+  padding: 25px 30px;
+
+  width: 760px;
+  margin-left: 290px;
+
+  display: flex;              /* 🔥 important */
+  flex-direction: column;     /* 🔥 vertical layout */
+}
+
+/* TOP */
+.order-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.order-top h3 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #111827;
+}
+
+.table-info {
+  color: #6b7280;
+  font-size: 14px;
+  margin-top: 4px;
+}
+
+/* STATUS BADGE */
+.status-badge {
+  background: #fde68a;
+  color: #92400e;
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  margin-left: 450px;
+  margin-bottom: 40px;
+}
+
+/* PROGRESS */
+.progress-container {
+  display: flex;
+  justify-content: space-between;
+  padding-left: 10px;
+  margin: 25px 0 20px;
+  gap: 50px;
+  
+}
+
+/* STEP */
+.step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 13px;
+  color: #9ca3af;
+}
+
+/* CIRCLE */
+.circle {
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  background: #e5e7eb;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 18px;
+  margin-bottom: 6px;
+}
+
+/* ACTIVE STEP */
+.step.active .circle {
+  background: #f97316;
+  color: white;
+}
+
+.step.active {
+  color: #111827;
+}
+
+/* ================== */
+/* 🔥 ORDER ITEMS */
+/* ================== */
+
+.items {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-top: 10px;
+  color: #111827;
+}
+
+.items h4 {
+  margin-bottom: 12px;
+  font-size: 16px;
+}
+
+/* ITEM ROW */
+.item-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  width: 95%;
+  background: #f3f4f6;
+
+  padding: 14px 16px;
+  border-radius: 12px;
+
+  margin-bottom: 12px;
+  
+}
+
+/* LEFT TEXT */
+.item-left {
+  display: flex;
+  flex-direction: column;
+}
+
+.item-left p {
+  margin: 0;
+  font-weight: 500;
+}
+
+.item-left span {
+  font-size: 12px;
+  color: #6b7280;
+}
+
+/* PRICE */
+.item-price {
+  font-weight: 600;
+}
+
+/* ================== */
+/* TOTAL */
+/* ================== */
+
+.total {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  padding-top: 12px;
+  border-top: 1px solid #e5e7eb;
+  color: #111827;
+}
+
+.total-price {
+  color: #f97316;
+  font-weight: 700;
+  margin-left: 590px;
+}
+
+/* ================== */
+/* PREVIOUS ORDERS */
+/* ================== */
+
+.previous-title {
+  margin-left: 300px;
+  margin-top: 30px;
+  color: #111827;
+}
+
+.previous-card {
+  background: white;
+  padding: 18px;
+  border-radius: 12px;
+  margin-right: 300px;
+  margin-left: 300px;
+  margin-top: 12px;
+  display: flex;
+  justify-content: space-between;
+  color: #111827;
+}
+
+.prev-right {
+  text-align: right;
+}

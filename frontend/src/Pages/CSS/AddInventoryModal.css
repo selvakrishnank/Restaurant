@@ -1,0 +1,132 @@
+/* BACKGROUND */
+
+.modal-overlay {
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  background: rgba(0,0,0,0.5);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  z-index: 999;
+}
+
+/* MODAL BOX */
+
+.modal-container {
+
+  width: 520px;
+  background: white;
+
+  border-radius: 16px;
+
+  padding: 30px;
+
+  box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+}
+
+
+/* HEADER */
+
+.modal-header {
+
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+
+  margin-bottom: 20px;
+}
+
+
+.modal-header h2 {
+
+  margin: 0;
+  font-size: 24px;
+}
+
+.modal-header p {
+
+  color: #6b7280;
+  margin-top: 4px;
+}
+
+.close-btn {
+
+  cursor: pointer;
+  font-size: 20px;
+}
+
+/* FORM */
+
+.modal-form {
+
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.form-row {
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+/* INPUTS */
+
+.modal-form input {
+
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+}
+/* ROW (Stock + Unit) */
+
+.row {
+
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  gap: 15px;
+
+}
+
+/* BUTTONS */
+
+.modal-buttons {
+
+  display: flex;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+
+.cancel-btn {
+
+  flex: 1;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  background: white;
+  color: #000;
+}
+
+.add-btn {
+
+  flex: 1;
+  padding: 12px;
+  border-radius: 10px;
+  border: none;
+  background: black;
+  color: white;
+}
+
+.add-btn:hover {
+  background: #000;   /* keep same color */
+}

@@ -1,0 +1,332 @@
+.inventory-page{
+padding:40px;
+background:#f8fafc;
+min-height:100vh;
+font-family:system-ui;
+width: 1360px;
+}
+
+/* header */
+
+.inventory-header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:25px;
+}
+
+
+.inventory-header h2{
+font-size:28px;
+font-weight:700;
+color: #0f172a;
+}
+
+.inventory-header p{
+color:#6b7280;
+margin-top:4px;
+}
+
+.add-item-btn{
+background:#0f172a;
+color: white;
+border:none;
+padding:10px 16px;
+border-radius:8px;
+cursor:pointer;
+font-weight:500;
+margin-left: 750px;
+}
+
+.add-item-btn:hover {
+
+  color: white;
+
+}
+
+.dashboard-btn{
+background:white;
+border:1px solid #e5e7eb;
+padding:10px 18px;
+border-radius:8px;
+cursor:pointer;
+font-weight:500;
+color:#111827;
+}
+
+/* stats */
+
+.inventory-stats{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:80px;
+margin-bottom:30px;
+margin-right: 45px;
+}
+
+.card{
+background:white;
+border:1px solid #e5e7eb;
+border-radius:14px;
+padding:22px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+height:90px;
+}
+
+.card p{
+color:#6b7280;
+font-size:14px;
+}
+
+.card h3{
+font-size:26px;
+font-weight:700;
+}
+
+/* icons */
+
+.icon{
+font-size:26px;
+}
+
+
+/* inventory list */
+
+.inventory-list{
+background:white;
+border:1px solid #e5e7eb;
+border-radius:16px;
+padding:40px;
+text-align:center;
+}
+
+.inventory-list h3{
+    color: #0f172a;
+    margin-right: 1100px;
+    padding-bottom: -200px;
+    font-size:18px;
+    font-weight:600;
+    margin-bottom:5px;
+    
+}
+
+
+.inventory-desc{
+color:#6b7280;
+margin-bottom:30px;
+margin-right: 930px;
+}
+
+.empty{
+display:flex;
+flex-direction:column;
+align-items:center;
+gap:10px;
+font-size:18px;
+color:#9ca3af;
+}
+
+/* add first button */
+
+.add-first-btn{
+margin-top:10px;
+background:#0f172a;
+color:white;
+border:none;
+padding:10px 18px;
+border-radius:8px;
+cursor:pointer;
+}
+
+.success-alert {
+
+  position: fixed;
+  top: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  background: #14532d;
+  color: white;
+
+  padding: 12px 22px;
+  border-radius: 8px;
+
+  font-weight: 500;
+
+  z-index: 999;
+
+  box-shadow: 0 6px 16px rgba(0,0,0,0.25);
+
+  animation: fadeSlide 0.3s ease;
+}
+
+@keyframes fadeSlide {
+
+  from {
+    opacity: 0;
+    transform: translate(-50%, -10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+
+}
+
+.inventory-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #f8fafc;
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+  padding: 22px 28px;
+  margin-top: 16px;
+}
+
+/* LEFT SECTION */
+.item-left {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* NAME + BADGE */
+.item-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #0f172a;
+}
+
+.item-header h4 {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0;
+}
+
+/* STOCK BADGE */
+.stock-badge {
+  background: #22c55e;
+  color: white;
+  font-size: 13px;
+  padding: 4px 12px;
+  border-radius: 999px;
+}
+
+/* TEXT STYLE */
+.inventory-item p {
+  margin: 2px 0;
+  color: #475569;
+  font-size: 15px;
+}
+
+.inventory-item b {
+  color: #111827;
+}
+
+/* BUTTON AREA */
+.stock-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.stock-buttons button {
+  padding: 6px 14px;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  background: white;
+  font-size: 14px;
+  cursor: pointer;
+  transition: 0.2s;
+  color: #0f172a;
+}
+
+.stock-buttons button:hover {
+  background: #f3f4f6;
+}
+
+.stock-badge {
+  background: #22c55e;
+  color: white;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+}
+
+.low-badge {
+  background: #f97316;
+  color: white;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+}
+
+.out-badge {
+  background: #ef4444;
+  color: white;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+}
+
+.stock-alerts {
+
+  background: #fff7ed;
+  border: 1px solid #f97316;
+
+  padding: 20px;
+  border-radius: 10px;
+
+  margin: 20px 0;
+
+}
+
+.stock-alerts h4 {
+
+  margin-bottom: 10px;
+  color: #ea580c;
+
+}
+
+.alert-section {
+
+  margin-top: 10px;
+
+}
+
+.alert-title {
+
+  font-weight: 600;
+  margin-bottom: 5px;
+  color: #ef4444;
+
+}
+
+.alert-badge {
+
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 12px;
+
+  font-size: 12px;
+  margin-right: 8px;
+
+}
+
+.alert-badge.red {
+
+  background: #ef4444;
+  color: white;
+
+}
+
+.alert-badge.orange {
+
+  background: #f97316;
+  color: white;
+
+}

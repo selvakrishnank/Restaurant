@@ -1,0 +1,49 @@
+.success-page {
+  background: #dfe9e5;
+  min-height: 100vh;
+  padding-top: 40px;
+  text-align: center;
+  font-family: Arial, sans-serif;
+  padding-right: 500px;
+  padding-left: 465px;
+}
+
+.top-banner {
+  background: #0f3d2e;
+  color: white;
+  padding: 12px 20px;
+  width: fit-content;
+  margin: 0 auto 40px;
+  border-radius: 8px;
+}
+
+.success-card {
+  background: #f3f3f3;
+  width: 420px;
+  margin: auto;
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  color: black;
+}
+
+.check-icon {
+  font-size: 60px;
+  color: #2dbf6c;
+  margin-bottom: 15px;
+}
+
+.success-card h2 {
+  margin-bottom: 10px;
+}
+
+.success-card p {
+  color: #555;
+  margin-bottom: 20px;
+}
+
+.details-box {
+  background: #eaeaea;
+  padding: 15px;
+  border-radius: 10px;
+}
