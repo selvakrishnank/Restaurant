@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
 import { getDashboard } from "../api/ownerApi";
 import "./CSS/OwnerDashboard.css";
+import { useNavigate } from "react-router-dom";
 
 export default function OwnerDashboard() {
   const [data, setData] = useState(null);
+  const navigate = useNavigate()
 
   useEffect(() => {
     loadData();
@@ -29,7 +31,7 @@ export default function OwnerDashboard() {
           </div>
         </div>
 
-        <button className="logouts-btn">⎋ Logout</button>
+        <button onClick={() => navigate("/")} className="logouts-btn">⎋ Logout</button>
       </div>
 
       {/* TOP STATS */}

@@ -105,8 +105,8 @@ export default function ManagerDashboard() {
         </div>
 
         <div className="header-buttons">
-          <button className="btn-outline">Inventory</button>
-          <button className="btn-outline">Logout</button>
+          <button onClick={() => navigate("/inventory")}className="btn-outline">Inventory</button>
+          <button onClick={() => navigate("/")} className="btn-outline">Logout</button>
         </div>
       </div>
 
