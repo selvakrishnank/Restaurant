@@ -8,9 +8,9 @@ import {
 } from "../api/orderApi";
 
 import "./CSS/WaiterDashboard.css";
-import bellIcon from "../Assets/bell.png";
-import debitIcon from "../Assets/creditcard2.png";
-import knifeIcon from "../Assets/knife1.png";
+import bellIcon from "../assets/bell.png";
+import debitIcon from "../assets/creditcard2.png";
+import knifeIcon from "../assets/knife1.png";
 import { useNavigate } from "react-router-dom";
 
 export default function WaiterDashboard() {
