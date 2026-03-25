@@ -13,7 +13,7 @@ export default function FoodCard({
       <div className="food-image-container">
         <img src={food.image} alt={food.name} />
 
-        <span className="price">${Number(food.price || 0).toFixed(2)}</span>
+        <span className="prices">${Number(food.price || 0).toFixed(2)}</span>
       </div>
 
       <div className="food-info">
