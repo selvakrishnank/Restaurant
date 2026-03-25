@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 export default function OwnerDashboard() {
   const [data, setData] = useState(null);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   useEffect(() => {
     loadData();
@@ -20,7 +20,6 @@ export default function OwnerDashboard() {
 
   return (
     <div className="dashboard">
-      {/* 🔥 HEADER */}
       <div className="dashboard-header">
         <div className="header-left">
           <div className="icon">📈</div>
@@ -31,10 +30,11 @@ export default function OwnerDashboard() {
           </div>
         </div>
 
-        <button onClick={() => navigate("/")} className="logouts-btn">⎋ Logout</button>
+        <button onClick={() => navigate("/")} className="logouts-btn">
+          ⎋ Logout
+        </button>
       </div>
 
-      {/* TOP STATS */}
       <div className="stats-grid">
         <div className="stat-card">
           <h4>Total Revenue</h4>
@@ -57,9 +57,7 @@ export default function OwnerDashboard() {
         </div>
       </div>
 
-      {/* GRID */}
       <div className="dashboard-grid">
-        {/* ORDER STATUS */}
         <div className="dashboard-card">
           <h3>Order Status Overview</h3>
 
@@ -80,7 +78,6 @@ export default function OwnerDashboard() {
           ))}
         </div>
 
-        {/* CATEGORY */}
         <div className="dashboard-card">
           <h3>Revenue by Category</h3>
 
@@ -101,7 +98,6 @@ export default function OwnerDashboard() {
           ))}
         </div>
 
-        {/* TOP ITEMS */}
         <div className="dashboard-card">
           <h3>Top Selling Items</h3>
 
@@ -121,7 +117,6 @@ export default function OwnerDashboard() {
           ))}
         </div>
 
-        {/* STAFF */}
         <div className="dashboard-card">
           <h3>Staff Overview</h3>
 
@@ -141,7 +136,7 @@ export default function OwnerDashboard() {
           ))}
         </div>
       </div>
-      {/* 🔥 MENU PERFORMANCE */}
+
       <div className="menu-performance">
         <h3>Menu Performance</h3>
 

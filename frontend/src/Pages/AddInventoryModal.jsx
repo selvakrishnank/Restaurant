@@ -2,8 +2,11 @@ import { useState } from "react";
 import { addInventory } from "../api/inventoryApi";
 import "./CSS/AddInventoryModal.css";
 
-export default function AddInventoryModal({ closeModal, refresh, showSuccess }) {
-
+export default function AddInventoryModal({
+  closeModal,
+  refresh,
+  showSuccess,
+}) {
   const [form, setForm] = useState({
     name: "",
     quantity: 0,
@@ -25,18 +28,14 @@ export default function AddInventoryModal({ closeModal, refresh, showSuccess }) 
 
     await addInventory(form);
 
-    refresh();       // reload inventory
-    if (showSuccess) showSuccess(); // success alert
-    closeModal();    // close modal
+    refresh();
+    if (showSuccess) showSuccess();
+    closeModal();
   };
 
   return (
     <div className="modal-overlay">
-
       <div className="modal-container">
-
-        {/* HEADER */}
-
         <div className="modal-header">
           <div>
             <h2>Add Inventory Item</h2>
@@ -48,10 +47,7 @@ export default function AddInventoryModal({ closeModal, refresh, showSuccess }) 
           </span>
         </div>
 
-        {/* FORM */}
-
         <form className="modal-form" onSubmit={handleSubmit}>
-
           <label>Item Name *</label>
 
           <input
@@ -64,7 +60,6 @@ export default function AddInventoryModal({ closeModal, refresh, showSuccess }) 
           />
 
           <div className="form-row">
-
             <div>
               <label>Current Stock *</label>
 
@@ -88,7 +83,6 @@ export default function AddInventoryModal({ closeModal, refresh, showSuccess }) 
                 required
               />
             </div>
-
           </div>
 
           <label>Minimum Stock Level</label>
@@ -101,26 +95,15 @@ export default function AddInventoryModal({ closeModal, refresh, showSuccess }) 
           />
 
           <div className="modal-buttons">
-
-            <button
-              type="button"
-              className="cancel-btn"
-              onClick={closeModal}
-            >
+            <button type="button" className="cancel-btn" onClick={closeModal}>
               Cancel
             </button>
 
-            <button
-              type="submit"
-              className="add-btn"
-            >
+            <button type="submit" className="add-btn">
               Add Item
             </button>
-
           </div>
-
         </form>
-
       </div>
     </div>
   );

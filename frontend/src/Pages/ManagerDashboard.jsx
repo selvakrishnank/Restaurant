@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./CSS/ManagerDashboard.css";
 import EditMenuModal from "../components/EditMenuModal/EditMenuModal";
 import AddMenuModal from "../components/AddMenuModal/AddMenuModal";
-import { useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom";
 
 import {
   getDashboardStats,
@@ -26,13 +26,10 @@ export default function ManagerDashboard() {
   const [orders, setOrders] = useState([]);
   const [menuItems, setMenuItems] = useState([]);
   const [selectedItem, setSelectedItem] = useState(null);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
-  /* ⭐ Category filter state */
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [showAddModal, setShowAddModal] = useState(false);
-
-  /* Load dashboard data */
 
   const loadData = async () => {
     try {
@@ -52,8 +49,6 @@ export default function ManagerDashboard() {
     loadData();
   }, []);
 
-  /* Toggle menu availability */
-
   const handleToggle = async (id) => {
     try {
       await toggleMenuItem(id);
@@ -63,8 +58,6 @@ export default function ManagerDashboard() {
     }
   };
 
-  /* Delete menu item */
-
   const handleDelete = async (id) => {
     try {
       await deleteMenuItem(id);
@@ -73,8 +66,6 @@ export default function ManagerDashboard() {
       console.error("Delete error:", error);
     }
   };
-
-  /* Update menu item */
 
   const handleUpdate = async (id, data) => {
     try {
@@ -87,8 +78,6 @@ export default function ManagerDashboard() {
     }
   };
 
-  /* ⭐ Category Filter Logic */
-
   const filteredMenu =
     selectedCategory === "All"
       ? menuItems
@@ -96,8 +85,6 @@ export default function ManagerDashboard() {
 
   return (
     <div className="dashboard">
-      {/* Header */}
-
       <div className="header">
         <div>
           <h2>Manager Dashboard</h2>
@@ -105,14 +92,19 @@ export default function ManagerDashboard() {
         </div>
 
         <div className="header-buttons">
-          <button onClick={() => navigate("/inventory")}className="btn-outline">Inventory</button>
-          <button onClick={() => navigate("/")} className="btn-outline">Logout</button>
+          <button
+            onClick={() => navigate("/inventory")}
+            className="btn-outline"
+          >
+            Inventory
+          </button>
+          <button onClick={() => navigate("/")} className="btn-outline">
+            Logout
+          </button>
         </div>
       </div>
 
       <hr />
-
-      {/* Stats */}
 
       <div className="stats">
         <div className="cards stats-card">
@@ -148,8 +140,6 @@ export default function ManagerDashboard() {
         </div>
       </div>
 
-      {/* Quick Access */}
-
       <div className="quick-access">
         <h3>Quick Access</h3>
 
@@ -173,11 +163,8 @@ export default function ManagerDashboard() {
             <FaDollarSign />
             <span>Catering</span>
           </div>
-
         </div>
       </div>
-
-      {/* Menu Management */}
 
       <div className="menu-section">
         <div className="menu-header">
@@ -186,8 +173,6 @@ export default function ManagerDashboard() {
             + Add New Item
           </button>
         </div>
-
-        {/* ⭐ Category Tabs */}
 
         <div className="menu-tabs">
           <button
@@ -225,8 +210,6 @@ export default function ManagerDashboard() {
             Drinks
           </button>
         </div>
-
-        {/* ⭐ Filtered Menu */}
 
         <div className="menu-list">
           {filteredMenu.map((item) => (
@@ -277,8 +260,6 @@ export default function ManagerDashboard() {
         </div>
       </div>
 
-      {/* Recent Orders */}
-
       <div className="recent-orders">
         <h3>Recent Orders</h3>
 
@@ -306,8 +287,6 @@ export default function ManagerDashboard() {
           ))
         )}
       </div>
-
-      {/* Edit Modal */}
 
       {selectedItem && (
         <EditMenuModal

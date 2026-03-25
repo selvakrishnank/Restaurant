@@ -5,7 +5,6 @@ import "./CSS/OrderSuccess.css";
 function OrderSuccess() {
   const navigate = useNavigate();
 
-  // redirect after 3 seconds
  useEffect(() => {
     const timer = setTimeout(() => {
       navigate("/order-tracking");

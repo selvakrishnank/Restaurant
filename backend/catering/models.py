@@ -16,12 +16,10 @@ class CateringOrder(models.Model):
         ("party", "Party"),
     ]
 
-    # BASIC INFO (React form)
     name = models.CharField(max_length=200)
     phone = models.CharField(max_length=20)
     email = models.EmailField(blank=True)
 
-    # EVENT INFO
     event_type = models.CharField(
         max_length=50,
         choices=EVENT_TYPE,
@@ -34,22 +32,17 @@ class CateringOrder(models.Model):
         default="pending"
     )
 
-    # DATE & TIME (split for React compatibility)
     date = models.DateField()
     time = models.TimeField(null=True, blank=True)
 
     guests = models.IntegerField()
 
-    # LOCATION
     venue = models.CharField(max_length=255)
 
-    # EXTRA INFO
     requests = models.TextField(blank=True)
 
-    # OPTIONAL MENU (from manager side)
     menu_items = models.JSONField(blank=True, null=True)
 
-    # PRICE (auto calculated)
     price = models.DecimalField(
         max_digits=10,
         decimal_places=2,
@@ -58,7 +51,6 @@ class CateringOrder(models.Model):
 
     created_at = models.DateTimeField(auto_now_add=True)
 
-    # AUTO CALCULATE PRICE
     def save(self, *args, **kwargs):
         self.price = self.guests * 30
         super().save(*args, **kwargs)

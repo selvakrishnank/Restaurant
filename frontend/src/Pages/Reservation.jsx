@@ -5,7 +5,6 @@ import "./CSS/Reservation.css";
 export default function Reservation() {
   const navigate = useNavigate();
 
-  // ✅ State Variables
   const [full_name, setFullName] = useState("");
   const [phone_number, setPhoneNumber] = useState("");
   const [date, setDate] = useState("");
@@ -13,7 +12,6 @@ export default function Reservation() {
   const [number_of_guests, setGuests] = useState(2);
   const [special_requests, setRequests] = useState("");
 
-  // ✅ CONNECT TO DJANGO API
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -64,7 +62,6 @@ export default function Reservation() {
         </div>
 
         <div className="reservation-content">
-          {/* LEFT FORM CARD */}
           <div className="reservation-card">
             <h2>Make a Reservation</h2>
             <p className="subtitle">Reserve your table at Eatrova</p>
@@ -153,7 +150,6 @@ export default function Reservation() {
             </form>
           </div>
 
-          {/* RIGHT INFO CARD */}
           <div className="info-card">
             <h3>Information</h3>
 

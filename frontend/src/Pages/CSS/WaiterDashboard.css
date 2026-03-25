@@ -1,12 +1,12 @@
 .waiter-container {
-  max-width: 1100px;   /* ✅ center layout */
+  max-width: 1100px;   
   margin: 0 auto;
   padding: 30px 20px;
   background: #f9fafb;
   
 }
 
-/* Header */
+
 .waiter-header {
   display: flex;
   justify-content: space-between;
@@ -33,7 +33,7 @@
   cursor: pointer;
 }
 
-/* Stats */
+
 .stats-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -72,7 +72,7 @@
  padding-left: 30px;
  }
 
-/* Orders Section */
+
 .orders-section {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -251,7 +251,6 @@ hr{
 
 }
 
-/* Billing Card */
 
 .billing-card{
   border:2px solid #e0ccff;
@@ -262,7 +261,6 @@ hr{
   color: #333;
 }
 
-/* Header */
 
 .billing-header{
   display:flex;
@@ -281,7 +279,6 @@ hr{
   color:#6b7280;
 }
 
-/* Billing Tag */
 
 .billing-tag{
   background:#efe7ff;
@@ -292,7 +289,6 @@ hr{
   font-size:14px;
 }
 
-/* Billing Box */
 
 .billing-box{
   background:#f3eefb;
@@ -301,7 +297,6 @@ hr{
   margin-bottom:22px;
 }
 
-/* Billing Row */
 
 .bill-row{
   display:flex;
@@ -311,7 +306,6 @@ hr{
   font-size:16px;
 }
 
-/* Divider */
 
 .billing-box hr{
   border:none;
@@ -319,7 +313,6 @@ hr{
   margin:14px 0;
 }
 
-/* Total Row */
 
 .bill-row.total{
   font-size:18px;
@@ -330,7 +323,6 @@ hr{
   color:#7c3aed;
 }
 
-/* Payment Button */
 
 .complete-payment-btn{
   width:100%;

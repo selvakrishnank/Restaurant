@@ -6,7 +6,7 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 export default function Signin() {
   const [formData, setFormData] = useState({
     email: "",
-    password: ""
+    password: "",
   });
 
   const [showPassword, setShowPassword] = useState(false);
@@ -16,11 +16,10 @@ export default function Signin() {
   const handleChange = (e) => {
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
   };
 
-  // 🔐 LOGIN FUNCTION (JWT)
   const handleSignin = async (e) => {
     e.preventDefault();
 
@@ -36,7 +35,7 @@ export default function Signin() {
             username: formData.email,
             password: formData.password,
           }),
-        }
+        },
       );
 
       const data = await response.json();
@@ -68,11 +67,9 @@ export default function Signin() {
           default:
             navigate("/");
         }
-
       } else {
         alert(data.detail || "Invalid Credentials ❌");
       }
-
     } catch (error) {
       console.error("Server Error:", error);
       alert("Server not responding ❌");
@@ -88,9 +85,7 @@ export default function Signin() {
 
       <div className="auth-card">
         <h3>Sign In</h3>
-        <p className="sub">
-          Enter your credentials to access your dashboard
-        </p>
+        <p className="sub">Enter your credentials to access your dashboard</p>
 
         <form onSubmit={handleSignin}>
           <label>Email</label>
@@ -103,7 +98,6 @@ export default function Signin() {
             required
           />
 
-          {/* 🔐 PASSWORD WITH EYE */}
           <label>Password</label>
           <div className="password-field">
             <input

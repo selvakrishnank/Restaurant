@@ -1,14 +1,14 @@
-/* Full page container */
+
 .empty-cart {
   min-height: 100vh;
-  background-color: #f3f4f6; /* light grey background */
+  background-color: #f3f4f6; 
   display: flex;
   flex-direction: column;
   padding-right: 1200px;
   color: black;
 }
 
-/* Top Back Button */
+
 .empty-back-btn {
   width: 150px;
   background: white;  border: 1px solid #ddd;
@@ -33,7 +33,7 @@
   border: none;
 }
 
-/* Center Content */
+
 .empty-content {
   flex: 1;
   display: flex;
@@ -45,14 +45,14 @@
   padding-bottom: 250px;
 }
 
-/* Cart Icon */
+
 .cart-icon {
   font-size: 70px;
   color: #cbd5e1;
   margin-bottom: 20px;
 }
 
-/* Title */
+
 .empty-content h2 {
   font-size: 20px;
   font-weight: 600;
@@ -62,16 +62,16 @@
   
 }
 
-/* Subtitle */
+
 .empty-content p {
   font-size: 14px;
   color: #6b7280;
   margin-bottom: 25px;
 }
 
-/* Browse Button */
+
 .browse-btn {
-  background-color: #f97316; /* orange */
+  background-color: #f97316;
   color: white;
   border: none;
   padding: 10px 70px;
@@ -86,7 +86,7 @@
   background-color: #ea580c;
 }
 
-/* Page Wrapper */
+
 .cart-container {
   max-width: 1100px;
   margin: 0 auto;
@@ -96,9 +96,9 @@
   margin-left: 150px;
 }
 
-/* Back Button */
+
 .back-btn {
-  display: inline-flex;        /* 🔥 FIX: keeps items in one row */
+  display: inline-flex;        
   align-items: center;
   gap: 8px;
 
@@ -114,14 +114,14 @@
 
   cursor: pointer;
 
-  width: fit-content;          /* 🔥 IMPORTANT */
-  white-space: nowrap;         /* 🔥 PREVENT TEXT BREAK */
+  width: fit-content;          
+  white-space: nowrap;         
 }
 
 .back-btn {
-  display: inline-flex;          /* 🔥 makes icon + text in one line */
-  align-items: center;           /* vertical center */
-  gap: 8px;                      /* space between arrow & text */
+  display: inline-flex;          
+  align-items: center;           
+  gap: 8px;                      
 
   background: white;
   border: 1px solid #e5e7eb;
@@ -148,7 +148,7 @@
   color: black;
 }
 
-/* Layout */
+
 .cart-layout {
   display: grid;
   grid-template-columns: 2fr 1fr;
@@ -156,14 +156,13 @@
   align-items: start;
 }
 
-/* ================= LEFT SIDE ================= */
 
 .cart-items {
   flex: 2;
   padding-right: 30PX;
 }
 
-/* Cart Card */
+
 .cart-card {
   background: white;
   border-radius: 16px;
@@ -182,7 +181,7 @@
   border-radius: 12px;
 }
 
-/* Item Info */
+
 .item-info {
   flex: 1;
   margin-left: 20px;
@@ -200,7 +199,7 @@
   font-size: 14px;
 }
 
-/* Quantity */
+
 .qty-control {
   display: flex;
   align-items: center;
@@ -229,7 +228,7 @@
   color: black;
 }
 
-/* Price + Delete */
+
 .item-price {
   display: flex;
   flex-direction: column;
@@ -242,7 +241,7 @@
   font-weight: 600;
 }
 
-/* Delete Button */
+
 .delete-btn {
   background: none;
   border: none;
@@ -250,7 +249,6 @@
   font-size: 18px;
 }
 
-/* ================= RIGHT SIDE ================= */
 
 .summary-card {
   background: white;
@@ -266,7 +264,7 @@
   color: black;
 }
 
-/* Inputs */
+
 .summary-card input {
   width: 100%;
   padding: 10px;
@@ -275,10 +273,10 @@
   background: #f3f4f6;
 }
 
-/* Summary Rows */
+
 .summary-row {
   display: flex;
-  justify-content: space-between;  /* 🔥 This creates space */
+  justify-content: space-between;  
   align-items: center;
   margin-bottom: 12px;
   font-size: 15px;
@@ -316,7 +314,6 @@
 }
 
 
-/* Place Order */
 .order-btn {
   width: 100%;
   margin-top: 15px;
@@ -338,7 +335,7 @@
   border: none;
 }
 
-/* Split Bill */
+
 .split-btn {
   width: 100%;
   margin-top: 10px;
@@ -353,13 +350,13 @@
   outline: none;
   border: none;
 }
-/* Note Text */
+
 .note {
   margin-top: 14px;
   font-size: 13px;
   text-align: center;
   color: #6b7280;
 
-  width: 100%;           /* 🔥 FIX */
-  line-height: 1.5;      /* better spacing */
+  width: 100%;           
+  line-height: 1.5;     
 }

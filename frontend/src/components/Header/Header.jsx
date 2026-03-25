@@ -7,8 +7,6 @@ export default function Header({ totalItems = 0 }) {
 
   return (
     <header className="header">
-
-      {/* LEFT */}
       <div className="header-left">
         <h2 className="logo" onClick={() => navigate("/")}>
           Eatrova
@@ -16,24 +14,19 @@ export default function Header({ totalItems = 0 }) {
         <p className="subtitle">Browse our delicious menu</p>
       </div>
 
-      {/* RIGHT */}
       <div className="header-actions">
-
         <button className="outline" onClick={() => navigate("/reserve")}>
           📅 Reserve Table
         </button>
 
         <button className="cart" onClick={() => navigate("/cart")}>
           🛒 View Cart
-          {totalItems > 0 && (
-            <span className="cart-badge">{totalItems}</span>
-          )}
+          {totalItems > 0 && <span className="cart-badge">{totalItems}</span>}
         </button>
 
         <button className="out" onClick={() => navigate("/")}>
           <img src={exitIcon} alt="Exit" />
         </button>
-
       </div>
     </header>
   );

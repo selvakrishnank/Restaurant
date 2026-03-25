@@ -9,7 +9,7 @@ export default function Signup() {
     email: "",
     role: "customer",
     password: "",
-    confirmPassword: ""
+    confirmPassword: "",
   });
 
   const [showPassword, setShowPassword] = useState(false);
@@ -21,7 +21,6 @@ export default function Signup() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  // ✅ CONNECTED TO DJANGO
   const handleSignup = async (e) => {
     e.preventDefault();
 
@@ -44,7 +43,7 @@ export default function Signup() {
             password: formData.password,
             role: formData.role.toLowerCase(),
           }),
-        }
+        },
       );
 
       const data = await response.json();
@@ -55,7 +54,6 @@ export default function Signup() {
       } else {
         alert("Error: " + JSON.stringify(data));
       }
-
     } catch (error) {
       console.error("Server Error:", error);
       alert("Server not responding ❌");
@@ -69,7 +67,6 @@ export default function Signup() {
         <p className="subtitles">Create your account</p>
 
         <form onSubmit={handleSignup}>
-
           <label>Full Name</label>
           <input
             type="text"
@@ -97,7 +94,6 @@ export default function Signup() {
             <option value="owner">Owner</option>
           </select>
 
-          {/* 🔐 PASSWORD */}
           <label>Password</label>
           <div className="password-field">
             <input
@@ -112,7 +108,6 @@ export default function Signup() {
             </span>
           </div>
 
-          {/* 🔐 CONFIRM PASSWORD */}
           <label>Confirm Password</label>
           <div className="password-field">
             <input
@@ -130,7 +125,6 @@ export default function Signup() {
           <button type="submit" className="auth-btn">
             Sign Up
           </button>
-
         </form>
 
         <p className="switch-text">

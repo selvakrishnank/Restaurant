@@ -6,7 +6,7 @@
   align-items: center;
   justify-content: center;
   font-family: Inter, sans-serif;
-  padding: 20px;              /* important for mobile */
+  padding: 20px;              
   box-sizing: border-box;
 }
 
@@ -27,10 +27,9 @@
   font-size: 14px;
 }
 
-/* 🔥 RESPONSIVE CARD */
 .auth-card {
-  width: 100%;                /* full width on mobile */
-  max-width: 420px;           /* max width for desktop */
+  width: 100%;                
+  max-width: 420px;           
   background: white;
   padding: 30px;
   border-radius: 16px;

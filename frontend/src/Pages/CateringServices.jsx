@@ -53,7 +53,6 @@ export default function CateringServices() {
     loadOrders();
   };
 
-  /* STATS */
   const totalOrders = orders.length;
   const pending = orders.filter((o) => o.status === "pending").length;
   const confirmed = orders.filter((o) => o.status === "confirmed").length;
@@ -62,8 +61,6 @@ export default function CateringServices() {
 
   return (
     <div className="catering-page">
-
-      {/* MODAL */}
       {showModal && (
         <CreateCateringModal
           closeModal={() => setShowModal(false)}
@@ -71,8 +68,9 @@ export default function CateringServices() {
         />
       )}
 
-      {/* HEADER */}
-      <div className="top-bar" onClick={() => navigate(-1)}>← Back</div>
+      <div className="top-bar" onClick={() => navigate(-1)}>
+        ← Back
+      </div>
 
       <div className="header">
         <div>
@@ -85,9 +83,7 @@ export default function CateringServices() {
         </button>
       </div>
 
-      {/* ✅ STATS WITH ICONS */}
       <div className="stats">
-
         <div className="card stat-card">
           <div className="stat-left orange">
             <FaUtensils />
@@ -137,14 +133,10 @@ export default function CateringServices() {
             <h3>${revenue}</h3>
           </div>
         </div>
-
       </div>
 
-      {/* ORDERS */}
       {orders.map((order) => (
         <div key={order.id} className="orders-card">
-
-          {/* LEFT */}
           <div className="left">
             <div className="title-row">
               <h3>{order.name}</h3>
@@ -156,27 +148,25 @@ export default function CateringServices() {
                   order.status === "confirmed"
                     ? "badge blue"
                     : order.status === "pending"
-                    ? "badge yellow"
-                    : order.status === "in_progress"
-                    ? "badge purple"
-                    : "badge green"
+                      ? "badge yellow"
+                      : order.status === "in_progress"
+                        ? "badge purple"
+                        : "badge green"
                 }
               >
                 {order.status}
               </span>
             </div>
 
-            <p>📅 {order.date} {order.time}</p>
+            <p>
+              📅 {order.date} {order.time}
+            </p>
             <p>👥 {order.guests} guests</p>
             <p>📞 {order.phone}</p>
           </div>
 
-          {/* RIGHT */}
           <div className="right">
-
-            {/* TOP RIGHT */}
             <div className="right-top">
-
               <h2 className="price">${order.price}</h2>
 
               {order.status === "pending" && (
@@ -218,10 +208,8 @@ export default function CateringServices() {
               {order.status === "completed" && (
                 <span className="done-text">Completed</span>
               )}
-
             </div>
 
-            {/* BOTTOM RIGHT */}
             <div className="right-bottom">
               <p className="venue">📍 {order.venue}</p>
 
@@ -229,12 +217,9 @@ export default function CateringServices() {
                 <strong>Note:</strong> {order.requests}
               </p>
             </div>
-
           </div>
-
         </div>
       ))}
-
     </div>
   );
 }

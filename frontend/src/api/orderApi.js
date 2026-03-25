@@ -43,19 +43,19 @@ export const getOrderHistory = async (token) => {
   return res.json();
 };
 
-// Ready to Serve
+
 export const getReadyOrders = async () => {
   const res = await fetch("http://127.0.0.1:8000/api/orders/ready/");
   return res.json();
 };
 
-// Awaiting Payment
+
 export const getPaymentOrders = async () => {
   const res = await fetch("http://127.0.0.1:8000/api/orders/payment/");
   return res.json();
 };
 
-// Complete Payment
+
 export const completePayment = async (id) => {
   await fetch(`http://127.0.0.1:8000/api/orders/${id}/complete-payment/`, {
     method: "PATCH"

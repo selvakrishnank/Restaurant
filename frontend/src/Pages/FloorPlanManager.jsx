@@ -8,8 +8,6 @@ export default function FloorPlanManager() {
   const [zone, setZone] = useState("all");
   const navigate = useNavigate();
 
-  /* LOAD TABLES FROM DJANGO */
-
   const loadTables = async () => {
     let url = "http://127.0.0.1:8000/api/tables/";
 
@@ -30,8 +28,6 @@ export default function FloorPlanManager() {
   useEffect(() => {
     loadTables();
   }, [zone]);
-
-  /* CHANGE TABLE STATUS */
 
   const changeStatus = async (id) => {
     await fetch(`http://127.0.0.1:8000/api/tables/update/${id}/`, {
@@ -55,8 +51,6 @@ export default function FloorPlanManager() {
     );
   };
 
-  /* STATS */
-
   const total = tables.length;
   const available = tables.filter((t) => t.status === "available").length;
   const occupied = tables.filter((t) => t.status === "occupied").length;
@@ -72,8 +66,6 @@ export default function FloorPlanManager() {
       <h2>Floor Plan Manager</h2>
 
       <p className="subtitle">Visual table layout and status management</p>
-
-      {/* STATS */}
 
       <div className="stats">
         <div className="card black">
@@ -96,8 +88,6 @@ export default function FloorPlanManager() {
           <p>Reserved</p>
         </div>
       </div>
-
-      {/* ZONE FILTER */}
 
       <div className="zones">
         <button
@@ -129,8 +119,6 @@ export default function FloorPlanManager() {
         </button>
       </div>
 
-      {/* FLOOR LAYOUT */}
-
       <div className="floor-layout">
         {tables.map((table) => (
           <div
@@ -146,8 +134,6 @@ export default function FloorPlanManager() {
           </div>
         ))}
       </div>
-
-      {/* LEGEND */}
 
       <div className="legend-container">
         <h3 className="legend-title">Legend</h3>

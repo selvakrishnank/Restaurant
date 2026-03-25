@@ -10,7 +10,6 @@ from .models import Order, OrderItem
 from .serializers import OrderSerializer
 
 
-# ✅ PLACE ORDER
 class PlaceOrderView(APIView):
 
     authentication_classes = [JWTAuthentication]
@@ -21,18 +20,15 @@ class PlaceOrderView(APIView):
         name = request.data.get("name")
         table_number = request.data.get("table_number")
 
-        # ✅ validation
         if not table_number:
             return Response({"error": "Table number required"}, status=400)
 
-        # ✅ get cart
         cart, created = Cart.objects.get_or_create(user=request.user)
         cart_items = cart.items.select_related("menu_item")
 
         if not cart_items.exists():
             return Response({"error": "Cart is empty"}, status=400)
 
-        # ✅ calculate total
         subtotal = sum(
             item.menu_item.price * item.quantity
             for item in cart_items
@@ -41,7 +37,6 @@ class PlaceOrderView(APIView):
         tax = subtotal * Decimal("0.10")
         total = subtotal + tax
 
-        # ✅ create order
         order = Order.objects.create(
             user=request.user,
             name=name,
@@ -52,15 +47,13 @@ class PlaceOrderView(APIView):
             status="received"
         )
 
-        # 🔥 MARK TABLE AS OCCUPIED
         try:
             table = Table.objects.get(id=table_number)
             table.status = "occupied"
             table.save()
         except Table.DoesNotExist:
-            print("Table not found ❌")
+            print("Table not found")
 
-        # ✅ create order items
         for item in cart_items:
             OrderItem.objects.create(
                 order=order,
@@ -69,14 +62,12 @@ class PlaceOrderView(APIView):
                 price=item.menu_item.price
             )
 
-        # ✅ clear cart
         cart_items.delete()
 
         serializer = OrderSerializer(order)
         return Response(serializer.data)
 
 
-# ✅ CURRENT ORDER
 class CurrentOrderView(APIView):
 
     authentication_classes = [JWTAuthentication]
@@ -95,7 +86,6 @@ class CurrentOrderView(APIView):
         return Response(serializer.data)
 
 
-# ✅ ORDER HISTORY
 class OrderHistoryView(APIView):
 
     authentication_classes = [JWTAuthentication]
@@ -111,7 +101,6 @@ class OrderHistoryView(APIView):
         return Response(serializer.data)
 
 
-# ✅ KITCHEN VIEW
 class KitchenOrdersView(APIView):
 
     def get(self, request):
@@ -124,7 +113,6 @@ class KitchenOrdersView(APIView):
         return Response(serializer.data)
 
 
-# ✅ UPDATE ORDER STATUS
 class UpdateOrderStatusView(APIView):
 
     def patch(self, request, order_id):
@@ -145,7 +133,6 @@ class UpdateOrderStatusView(APIView):
         })
 
 
-# ✅ READY ORDERS
 class ReadyToServeOrdersView(APIView):
 
     def get(self, request):
@@ -158,7 +145,6 @@ class ReadyToServeOrdersView(APIView):
         return Response(serializer.data)
 
 
-# ✅ PAYMENT PENDING
 class AwaitingPaymentOrdersView(APIView):
 
     def get(self, request):
@@ -171,7 +157,6 @@ class AwaitingPaymentOrdersView(APIView):
         return Response(serializer.data)
 
 
-# 🔥 COMPLETE PAYMENT (IMPORTANT FIX)
 class CompletePaymentView(APIView):
 
     def patch(self, request, order_id):
@@ -181,25 +166,22 @@ class CompletePaymentView(APIView):
         except Order.DoesNotExist:
             return Response({"error": "Order not found"}, status=404)
 
-        # ✅ mark order paid
         order.status = "paid"
         order.save()
 
-        # 🔥 FREE TABLE
         try:
-            table = Table.objects.get(id=order.table_number)  # ✅ FIX
+            table = Table.objects.get(id=order.table_number) 
             table.status = "available"
             table.save()
         except Table.DoesNotExist:
-            print("Table not found ❌")
+            print("Table not found")
 
         return Response({
-            "message": "Payment completed & table freed ✅",
+            "message": "Payment completed & table freed",
             "status": order.status
         })
 
 
-# ✅ ACTIVE TABLES
 class ActiveTablesView(APIView):
 
     def get(self, request):

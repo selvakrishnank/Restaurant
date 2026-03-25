@@ -23,7 +23,7 @@ class ShiftListView(APIView):
 class CreateShiftView(APIView):
 
     def post(self, request):
-
+        
         serializer = ShiftSerializer(data=request.data)
 
         if serializer.is_valid():

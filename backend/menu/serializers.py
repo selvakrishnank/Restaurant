@@ -11,5 +11,5 @@ class MenuSerializer(serializers.ModelSerializer):
             "price",
             "category",
             "image",
-            "is_available"   # ⭐ ADD THIS
+            "is_available"   
         ]

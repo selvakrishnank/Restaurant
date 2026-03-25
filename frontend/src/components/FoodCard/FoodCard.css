@@ -1,4 +1,4 @@
-/* CARD */
+
 .food-card {
   border-radius: 16px;
   overflow: hidden;
@@ -9,7 +9,7 @@
   transform: translateY(-4px);
 }
 
-/* IMAGE */
+
 .food-image-container {
   position: relative;
   width: 100%;   /* ✅ FIX (NOT 110%) */
@@ -22,14 +22,14 @@
   object-fit: cover;
 }
 
-/* MOBILE IMAGE */
+
 @media (max-width: 768px) {
   .food-image-container {
     height: 200px;
   }
 }
 
-/* PRICE BADGE */
+
 .price {
   position: absolute;
   top: 10px;
@@ -43,7 +43,7 @@
   font-weight: 600;
 }
 
-/* BODY */
+
 .food-info {
   padding: 16px;
 }
@@ -61,7 +61,7 @@
   margin-bottom: 12px;
 }
 
-/* MOBILE TEXT */
+
 @media (max-width: 768px) {
   .food-info h3 {
     font-size: 16px;
@@ -72,7 +72,7 @@
   }
 }
 
-/* ADD BUTTON */
+
 .add-btn {
   width: 100%;
   background: #e95405;
@@ -89,14 +89,14 @@
   background: #c2410c;
 }
 
-/* CART ACTIONS */
+
 .cart-actions {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-/* QUANTITY */
+
 .quantity-controls {
   display: flex;
   gap: 8px;
@@ -114,7 +114,7 @@
   cursor: pointer;
 }
 
-/* REMOVE */
+
 .remove-btn {
   border: 1px solid #ea580c;
   color: #ea580c;
@@ -135,7 +135,7 @@
   cursor: pointer;
 }
 
-/* Mobile bigger touch area */
+
 @media (max-width: 768px) {
   .add-btn {
     padding: 14px;

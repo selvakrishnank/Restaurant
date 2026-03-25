@@ -11,7 +11,6 @@ function OrderTracking() {
 
   const token = localStorage.getItem("access");
 
-  // Load Orders
   const loadOrders = async () => {
     const current = await getCurrentOrder(token);
     const history = await getOrderHistory(token);
@@ -28,8 +27,6 @@ function OrderTracking() {
 
   return (
     <div className="tracking-page">
-      {/* Header */}
-
       <div className="tracking-header">
         <button className="back-btn" onClick={() => navigate("/home")}>
           ← Back to Menu
@@ -37,8 +34,6 @@ function OrderTracking() {
 
         <h2>Order Tracking</h2>
       </div>
-
-      {/* Current Order */}
 
       <div className="order-card">
         <div className="order-top">
@@ -50,8 +45,6 @@ function OrderTracking() {
 
           <span className="status-badge">{currentOrder.status}</span>
         </div>
-
-        {/* Progress */}
 
         <div className="progress-container">
           <div
@@ -83,8 +76,6 @@ function OrderTracking() {
           </div>
         </div>
 
-        {/* Order Items */}
-
         <div className="items">
           <h4>Order Items:</h4>
 
@@ -107,8 +98,6 @@ function OrderTracking() {
 
         <hr />
 
-        {/* Total */}
-
         <div className="total">
           <p>Total Amount</p>
 
@@ -117,8 +106,6 @@ function OrderTracking() {
           </p>
         </div>
       </div>
-
-      {/* Previous Orders */}
 
       <h3 className="previous-title">Previous Orders</h3>
 

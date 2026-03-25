@@ -3,12 +3,11 @@ import { createOrder } from "../../api/cateringApi";
 import "./CreateCateringModal.css";
 
 export default function CateringModal({ closeModal, refresh }) {
-
   const [form, setForm] = useState({
     name: "",
     phone: "",
     email: "",
-    event_type: "corporate",   // ✅ FIXED
+    event_type: "corporate",
     guests: 50,
     date: "",
     time: "",
@@ -29,7 +28,6 @@ export default function CateringModal({ closeModal, refresh }) {
 
   const estimatedCost = form.guests * baseRate;
 
-  // ✅ FINAL SUBMIT (CONNECTED TO BACKEND)
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -43,9 +41,8 @@ export default function CateringModal({ closeModal, refresh }) {
 
       await createOrder(payload);
 
-      refresh();     // 🔥 reload orders in parent
-      closeModal();  // close modal
-
+      refresh();
+      closeModal();
     } catch (err) {
       console.error(err);
     }
@@ -54,16 +51,12 @@ export default function CateringModal({ closeModal, refresh }) {
   return (
     <div className="modal-overlay">
       <div className="modal-box">
-
-        {/* HEADER */}
         <div className="modal-header">
           <h2>Create Catering Order</h2>
           <button onClick={closeModal}>✕</button>
         </div>
 
         <form onSubmit={handleSubmit}>
-
-          {/* Row 1 */}
           <div className="row">
             <div>
               <label>Client Name *</label>
@@ -84,7 +77,6 @@ export default function CateringModal({ closeModal, refresh }) {
             </div>
           </div>
 
-          {/* Email */}
           <label>Email</label>
           <input
             name="email"
@@ -92,7 +84,6 @@ export default function CateringModal({ closeModal, refresh }) {
             onChange={handleChange}
           />
 
-          {/* Row 2 */}
           <div className="row">
             <div>
               <label>Event Type</label>
@@ -115,7 +106,6 @@ export default function CateringModal({ closeModal, refresh }) {
             </div>
           </div>
 
-          {/* Row 3 */}
           <div className="row">
             <div>
               <label>Event Date *</label>
@@ -128,7 +118,6 @@ export default function CateringModal({ closeModal, refresh }) {
             </div>
           </div>
 
-          {/* Venue */}
           <label>Venue</label>
           <input
             name="venue"
@@ -136,7 +125,6 @@ export default function CateringModal({ closeModal, refresh }) {
             onChange={handleChange}
           />
 
-          {/* Special Requests */}
           <label>Special Requests</label>
           <textarea
             name="requests"
@@ -144,17 +132,14 @@ export default function CateringModal({ closeModal, refresh }) {
             onChange={handleChange}
           />
 
-          {/* COST */}
           <div className="cost-box">
             <strong>Estimated Cost:</strong> ${estimatedCost.toFixed(2)}
             <span>(Base rate: $30 per person)</span>
           </div>
 
-          {/* ✅ BUTTON (NO onClick) */}
           <button type="submit" className="submit-btn">
             Create Order
           </button>
-
         </form>
       </div>
     </div>

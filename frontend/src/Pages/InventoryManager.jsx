@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { getInventory, updateStock } from "../api/inventoryApi";
 import AddInventoryModal from "./AddInventoryModal";
 import "./CSS/InventoryManager.css";
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export default function InventoryManager() {
   const [items, setItems] = useState([]);
@@ -14,7 +14,6 @@ export default function InventoryManager() {
     loadItems();
   }, []);
 
-  /* AUTO HIDE SUCCESS MESSAGE */
   useEffect(() => {
     if (success) {
       const timer = setTimeout(() => {
@@ -24,46 +23,29 @@ export default function InventoryManager() {
     }
   }, [success]);
 
-  /* LOAD INVENTORY */
   const loadItems = async () => {
     const data = await getInventory();
     setItems(data);
   };
 
-  /* INVENTORY STATS */
-
   const total = items.length;
 
-  const outOfStock = items.filter(
-    (i) => i.quantity === 0
-  ).length;
+  const outOfStock = items.filter((i) => i.quantity === 0).length;
 
-  const lowStock = items.filter(
-    (i) => i.quantity <= i.minimum_stock
-  ).length;
+  const lowStock = items.filter((i) => i.quantity <= i.minimum_stock).length;
 
-  const wellStocked = items.filter(
-    (i) => i.quantity > i.minimum_stock
-  ).length;
+  const wellStocked = items.filter((i) => i.quantity > i.minimum_stock).length;
 
-  /* STOCK ALERT DATA */
+  const lowStockItems = items.filter((i) => i.quantity <= i.minimum_stock);
 
-  const lowStockItems = items.filter(
-    (i) => i.quantity <= i.minimum_stock
-  );
+  const outOfStockItems = items.filter((i) => i.quantity === 0);
 
-  const outOfStockItems = items.filter(
-    (i) => i.quantity === 0
-  );
-
-  /* STOCK INCREASE */
   const increaseStock = async (id) => {
     await updateStock(id, 10);
     setSuccess("Stock increased successfully");
     loadItems();
   };
 
-  /* STOCK DECREASE */
   const decreaseStock = async (id) => {
     await updateStock(id, -10);
     setSuccess("Stock decreased successfully");
@@ -72,12 +54,9 @@ export default function InventoryManager() {
 
   return (
     <>
-      {/* SUCCESS POPUP */}
       {success && <div className="success-alert">✔ {success}</div>}
 
       <div className="inventory-page">
-
-        {/* HEADER */}
         <div className="inventory-header">
           <div>
             <h2>Inventory Management</h2>
@@ -85,10 +64,7 @@ export default function InventoryManager() {
           </div>
 
           <div className="header-buttons">
-            <button
-              className="add-item-btn"
-              onClick={() => setShowModal(true)}
-            >
+            <button className="add-item-btn" onClick={() => setShowModal(true)}>
               + Add Item
             </button>
 
@@ -98,9 +74,7 @@ export default function InventoryManager() {
           </div>
         </div>
 
-        {/* STATS */}
         <div className="inventory-stats">
-
           <div className="card">
             <div>
               <p>Total Items</p>
@@ -132,13 +106,10 @@ export default function InventoryManager() {
             </div>
             <span className="icon">📈</span>
           </div>
-
         </div>
 
-        {/* STOCK ALERTS */}
         {(lowStockItems.length > 0 || outOfStockItems.length > 0) && (
           <div className="stock-alerts">
-
             <h4>⚠ Stock Alerts</h4>
 
             {outOfStockItems.length > 0 && (
@@ -164,11 +135,9 @@ export default function InventoryManager() {
                 ))}
               </div>
             )}
-
           </div>
         )}
 
-        {/* INVENTORY LIST */}
         <div className="inventory-list">
           <h3>Inventory Items</h3>
 
@@ -181,7 +150,6 @@ export default function InventoryManager() {
               <div className="empty">
                 📦
                 <p>No inventory items yet</p>
-
                 <button
                   className="add-first-btn"
                   onClick={() => setShowModal(true)}
@@ -192,19 +160,16 @@ export default function InventoryManager() {
             </>
           ) : (
             items.map((item) => {
-
               const status =
                 item.quantity === 0
                   ? "Out of Stock"
                   : item.quantity <= item.minimum_stock
-                  ? "Low Stock"
-                  : "In Stock";
+                    ? "Low Stock"
+                    : "In Stock";
 
               return (
                 <div key={item.id} className="inventory-item">
-
                   <div className="item-left">
-
                     <div className="item-header">
                       <h4>{item.name}</h4>
 
@@ -213,8 +178,8 @@ export default function InventoryManager() {
                           status === "In Stock"
                             ? "stock-badge"
                             : status === "Low Stock"
-                            ? "low-badge"
-                            : "out-badge"
+                              ? "low-badge"
+                              : "out-badge"
                         }
                       >
                         {status}
@@ -227,39 +192,27 @@ export default function InventoryManager() {
                       {item.unit}
                     </p>
 
-                    <p>
-                      Minimum Level: {item.minimum_stock}
-                    </p>
-
+                    <p>Minimum Level: {item.minimum_stock}</p>
                   </div>
 
                   <div className="stock-buttons">
-                    <button onClick={() => decreaseStock(item.id)}>
-                      - 10
-                    </button>
+                    <button onClick={() => decreaseStock(item.id)}>- 10</button>
 
-                    <button onClick={() => increaseStock(item.id)}>
-                      + 10
-                    </button>
+                    <button onClick={() => increaseStock(item.id)}>+ 10</button>
                   </div>
-
                 </div>
               );
             })
           )}
         </div>
 
-        {/* ADD ITEM MODAL */}
         {showModal && (
           <AddInventoryModal
             closeModal={() => setShowModal(false)}
             refresh={loadItems}
-            showSuccess={() =>
-              setSuccess("Inventory item added successfully")
-            }
+            showSuccess={() => setSuccess("Inventory item added successfully")}
           />
         )}
-
       </div>
     </>
   );

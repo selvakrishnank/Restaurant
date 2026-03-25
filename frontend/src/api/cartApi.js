@@ -2,7 +2,6 @@ const BASE_URL = "http://127.0.0.1:8000/api/cart";
 const ORDER_URL = "http://127.0.0.1:8000/api/orders";
 
 
-// 🔹 GET CART
 export const getCart = async () => {
   const token = localStorage.getItem("access");
 
@@ -20,7 +19,6 @@ export const getCart = async () => {
 };
 
 
-// 🔹 ADD ITEM TO CART
 export const addToCart = async (menuId) => {
   const token = localStorage.getItem("access");
 
@@ -43,7 +41,6 @@ export const addToCart = async (menuId) => {
 };
 
 
-// 🔹 REMOVE ITEM
 export const removeCartItem = async (id) => {
   const token = localStorage.getItem("access");
 
@@ -62,7 +59,6 @@ export const removeCartItem = async (id) => {
 };
 
 
-// 🔹 UPDATE QUANTITY
 export const updateQuantity = async (id, quantity) => {
   const token = localStorage.getItem("access");
 

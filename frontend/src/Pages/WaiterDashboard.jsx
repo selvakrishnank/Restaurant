@@ -14,17 +14,14 @@ import knifeIcon from "../assets/knife1.png";
 import { useNavigate } from "react-router-dom";
 
 export default function WaiterDashboard() {
-
   const navigate = useNavigate();
 
   const [readyOrders, setReadyOrders] = useState([]);
   const [awaitingPayments, setAwaitingPayments] = useState([]);
   const [activeTables, setActiveTables] = useState([]);
 
-  // Load orders
   const loadOrders = async () => {
     try {
-
       const ready = await getReadyOrders();
       const payment = await getPaymentOrders();
       const active = await getActiveTables();
@@ -32,39 +29,26 @@ export default function WaiterDashboard() {
       setReadyOrders(ready || []);
       setAwaitingPayments(payment || []);
       setActiveTables(active || []);
-
     } catch (error) {
-
       console.error("Error loading orders:", error);
-
     }
   };
 
-  // Mark Served
   const markServed = async (id) => {
     try {
-
       await updateOrderStatus(id, "served");
       loadOrders();
-
     } catch (error) {
-
       console.error("Serve error:", error);
-
     }
   };
 
-  // Complete Payment
   const handlePayment = async (id) => {
     try {
-
       await completePayment(id);
       loadOrders();
-
     } catch (error) {
-
       console.error("Payment error:", error);
-
     }
   };
 
@@ -75,33 +59,21 @@ export default function WaiterDashboard() {
   const activeTablesCount = activeTables.length;
 
   return (
-
     <div className="waiter-container">
-
-      {/* Header */}
-
       <header className="waiter-header">
-
         <div>
           <h2>🍽 Waiter Dashboard</h2>
           <p>Serve orders and manage billing</p>
         </div>
 
-        <button
-          onClick={() => navigate("/")}
-          className="logout-btns"
-        >
+        <button onClick={() => navigate("/")} className="logout-btns">
           Logout
         </button>
-
       </header>
 
       <hr />
 
-      {/* Stats */}
-
       <div className="stats-grid">
-
         <div className="statcard">
           <div>
             <p>Ready to Serve</p>
@@ -131,72 +103,42 @@ export default function WaiterDashboard() {
             <img src={knifeIcon} alt="" />
           </span>
         </div>
-
       </div>
 
-      {/* Orders Section */}
-
       <div className="orders-section">
-
-        {/* READY ORDERS */}
-
         <div className="orders-box">
-
           <h4>
             <img src={bellIcon} alt="" />
             Ready to Serve ({readyOrders.length})
           </h4>
 
           {readyOrders.length === 0 ? (
-
-            <div className="empty-box">
-              No orders ready
-            </div>
-
+            <div className="empty-box">No orders ready</div>
           ) : (
-
             readyOrders.map((order) => (
-
               <div key={order.id} className="order-cards">
-
                 <div className="order-header">
-
                   <h3>ORD-{order.id}</h3>
 
-                  <span className="ready-badge">
-                    Ready
-                  </span>
-
+                  <span className="ready-badge">Ready</span>
                 </div>
 
-                <p className="table-info">
-                  Table {order.table_number}
-                </p>
+                <p className="table-info">Table {order.table_number}</p>
 
                 <div className="items-box">
-
                   {(order.items || []).map((item, i) => (
-
                     <div key={i} className="item-row">
-
                       <p>{item.name}</p>
 
-                      <span>
-                        Quantity: {item.quantity}
-                      </span>
-
+                      <span>Quantity: {item.quantity}</span>
                     </div>
-
                   ))}
-
                 </div>
 
                 <div className="total-row">
-
                   <p>Total Amount</p>
 
                   <span>${order.total}</span>
-
                 </div>
 
                 <button
@@ -205,57 +147,37 @@ export default function WaiterDashboard() {
                 >
                   🍽 Mark as Served
                 </button>
-
               </div>
-
             ))
-
           )}
-
         </div>
 
-        {/* PAYMENT ORDERS */}
-
         <div className="orders-box">
-
           <h4>
             <img src={debitIcon} alt="" />
             Awaiting Payment ({awaitingPayments.length})
           </h4>
 
           {awaitingPayments.length === 0 ? (
-
-            <div className="empty-box">
-              No pending payments
-            </div>
-
+            <div className="empty-box">No pending payments</div>
           ) : (
-
             awaitingPayments.map((order) => {
-
               const subtotal = Number(order.total) || 0;
-              const tax = subtotal * 0.10;
+              const tax = subtotal * 0.1;
               const total = subtotal + tax;
 
               return (
-
                 <div key={order.id} className="billing-card">
-
                   <div className="billing-header">
-
                     <div>
                       <h3>ORD-{order.id}</h3>
                       <p>Table {order.table_number}</p>
                     </div>
 
-                    <span className="billing-tag">
-                      Billing
-                    </span>
-
+                    <span className="billing-tag">Billing</span>
                   </div>
 
                   <div className="billing-box">
-
                     <div className="bill-row">
                       <span>Subtotal</span>
                       <span>${subtotal.toFixed(2)}</span>
@@ -272,7 +194,6 @@ export default function WaiterDashboard() {
                       <span>Total</span>
                       <span>${total.toFixed(2)}</span>
                     </div>
-
                   </div>
 
                   <button
@@ -281,65 +202,38 @@ export default function WaiterDashboard() {
                   >
                     ✓ Complete Payment
                   </button>
-
                 </div>
-
               );
-
             })
-
           )}
-
         </div>
-
       </div>
 
-      {/* ACTIVE TABLES */}
-
-      <h3 className="active-title">
-        All Active Tables
-      </h3>
+      <h3 className="active-title">All Active Tables</h3>
 
       <div className="active-grid">
-
         {activeTables.map((order) => {
-
           const total = Number(order.total) || 0;
 
           return (
-
             <div key={order.id} className="table-card">
-
               <div className="table-header">
-
                 <h4>Table {order.table_number}</h4>
 
-                <span className="status-badges">
-                  {order.status}
-                </span>
-
+                <span className="status-badges">{order.status}</span>
               </div>
 
-              <p className="order-id">
-                ORD-{order.id}
-              </p>
+              <p className="order-id">ORD-{order.id}</p>
 
               <p className="items-count">
                 {(order.items || []).length} item(s)
               </p>
 
-              <p className="table-price">
-                ${total.toFixed(2)}
-              </p>
-
+              <p className="table-price">${total.toFixed(2)}</p>
             </div>
-
           );
-
         })}
-
       </div>
-
     </div>
   );
 }

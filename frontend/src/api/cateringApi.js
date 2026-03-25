@@ -1,6 +1,6 @@
 const API = "http://127.0.0.1:8000/api";
 
-// ✅ GET ORDERS
+
 export const getOrders = async () => {
   const res = await fetch(`${API}/catering/`);
 
@@ -12,9 +12,8 @@ export const getOrders = async () => {
 };
 
 
-// ✅ CREATE ORDER (FIXED URL)
 export const createOrder = async (data) => {
-  const res = await fetch(`${API}/catering/`, {   // 🔥 FIX HERE (removed /create/)
+  const res = await fetch(`${API}/catering/`, {   
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -30,7 +29,6 @@ export const createOrder = async (data) => {
 };
 
 
-// ✅ CONFIRM ORDER
 export const confirmOrder = async (id) => {
   const res = await fetch(`${API}/catering/${id}/confirm/`, {
     method: "PATCH",
@@ -44,7 +42,6 @@ export const confirmOrder = async (id) => {
 };
 
 
-// ✅ CANCEL ORDER
 export const cancelOrder = async (id) => {
   const res = await fetch(`${API}/catering/${id}/cancel/`, {
     method: "PATCH",

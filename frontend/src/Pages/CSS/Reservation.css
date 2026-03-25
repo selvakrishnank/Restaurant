@@ -1,7 +1,7 @@
 .reservation-container {
   background: #f5ede6;
   min-height: 100vh;
-  padding: 60px 20px;   /* 🔥 more top space */
+  padding: 60px 20px;   
 
   display: flex;
   justify-content: center;
@@ -11,17 +11,17 @@
 .reserve-wrapper {
   width: 100%;
   max-width: 1100px;
-  margin-top: 10px;  /* small push down */
+  margin-top: 10px; 
 }
 
-/* Header */
+
 .reservation-header {
   display: flex;
   align-items: center;
   gap: -20px;
 }
 
-/* 🔥 Back button like Figma */
+
 .back-btn {
   background: transparent;
   border: none;
@@ -37,7 +37,7 @@
   color: black;
 }
 
-/* 🔥 Title styling (important) */
+
 .title {
   font-size: 32px;
   font-weight: 600;
@@ -45,14 +45,14 @@
   margin-left: -1250px;
 }
 
-/* Main Layout */
+
 .reservation-content {
   display: flex;
   gap: 40px;
   align-items: flex-start;
 }
 
-/* LEFT CARD */
+
 .reservation-card {
   background: white;
   padding: 30px;
@@ -75,7 +75,7 @@
   padding-right: 550px;
 }
 
-/* Form */
+
 .form-row {
   display: flex;
   gap: 20px;
@@ -133,7 +133,7 @@ textarea {
   background: #111827;
 }
 
-/* RIGHT CARD */
+
 .info-card {
   background: white;
   padding: 25px;
@@ -147,7 +147,7 @@ textarea {
   color: #333;
 }
 
-/* Info Boxes */
+
 .info-box {
   padding: 18px;
   border-radius: 14px;

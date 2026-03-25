@@ -48,7 +48,6 @@ class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
 
     def validate(self, attrs):
 
-        # Allow login using email
         try:
             user_obj = User.objects.get(email=attrs['username'])
         except User.DoesNotExist:
@@ -56,13 +55,10 @@ class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
 
         attrs['username'] = user_obj.username
 
-        # Get default token response
         data = super().validate(attrs)
 
-        # Get profile
         profile = Profile.objects.get(user=self.user)
 
-        # Add extra fields
         data['username'] = self.user.username
         data['email'] = self.user.email
         data['role'] = profile.role

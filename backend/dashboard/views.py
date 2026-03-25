@@ -4,40 +4,32 @@ from django.db.models import Sum, Avg, Count, F
 from orders.models import Order, OrderItem
 from menu.models import MenuItem
 from django.db.models import Count
-from shifts.models import Shift   # create this model
+from shifts.models import Shift   
 
 
 class OwnerDashboardView(APIView):
 
     def get(self, request):
 
-        # 🔹 Total Revenue
         total_revenue = Order.objects.filter(
             status="paid"
         ).aggregate(total_sum=Sum("total"))["total_sum"]
 
-        # 🔹 Total Orders
         total_orders = Order.objects.count()
 
-        # 🔹 Avg Order Value
         avg_order = Order.objects.aggregate(avg=Avg("total"))["avg"]
 
-        # 🔹 Staff Count
         staff_count = Shift.objects.count()
 
-        # 🔹 Order Status
         status_data = Order.objects.values("status").annotate(
             count=Count("id")
         )
 
-        # 🔹 Revenue by Category
         category_data = OrderItem.objects.values(
             "menu_item__category"
         ).annotate(
             total=Sum("price")
         )
-
-        # 🔹 Top Selling Items
 
         top_items = OrderItem.objects.values(
             "menu_item__name"
@@ -46,7 +38,6 @@ class OwnerDashboardView(APIView):
             revenue=Sum(F("price") * F("quantity"))   # ✅ FIX
         ).order_by("-total_sold")[:5]
 
-        # 🔹 Staff Overview
         staff = Shift.objects.all().values(
             "employee_name", "role", "status"
         )
