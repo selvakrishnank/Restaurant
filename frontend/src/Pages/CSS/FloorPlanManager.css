@@ -1,4 +1,3 @@
-/* PAGE */
 
 .floor-page{
   padding:40px;
@@ -27,8 +26,6 @@ opacity: 0.7;
 font-size: 15px;
 }
 
-/* HEADER */
-
 .floor-page h2{
   font-size:28px;
   font-weight:700;
@@ -41,11 +38,6 @@ font-size: 15px;
   margin-bottom:30px;
   margin-right: 500px;
 }
-
-
-/* ====================== */
-/* STATS */
-/* ====================== */
 
 .stats{
   display:flex;
@@ -72,8 +64,6 @@ font-size: 15px;
   font-size:14px;
 }
 
-/* colored stat cards */
-
 .card.green{
   border-left:5px solid #22c55e;
 }
@@ -86,10 +76,6 @@ font-size: 15px;
   border-left:5px solid #f59e0b;
 }
 
-
-/* ====================== */
-/* ZONE FILTER */
-/* ====================== */
 
 .zones{
   background:white;
@@ -124,11 +110,6 @@ font-size: 15px;
   color:white;
 }
 
-
-/* ====================== */
-/* FLOOR LAYOUT */
-/* ====================== */
-
 .floor-layout{
   margin-top:30px;
   padding:40px;
@@ -141,11 +122,6 @@ font-size: 15px;
 
   background:#f9fafb;
 }
-
-
-/* ====================== */
-/* TABLE */
-/* ====================== */
 
 .table{
 
@@ -200,8 +176,6 @@ font-size: 15px;
   text-transform:capitalize;
 }
 
-/* TABLE STATUS COLORS */
-
 .table.available{
   background:#22c55e;
 }
@@ -215,12 +189,6 @@ font-size: 15px;
 }
 
 
-/* ====================== */
-/* LEGEND */
-/* ====================== */
-
-/* LEGEND CARD */
-
 .legend-container{
   margin-top:40px;
   background:white;
@@ -229,7 +197,6 @@ font-size: 15px;
   border:1px solid #e5e7eb;
 }
 
-/* TITLE */
 
 .legend-title{
   font-size:20px;
@@ -238,14 +205,12 @@ font-size: 15px;
   color: #111827;
 }
 
-/* ITEMS ROW */
 
 .legend-items{
   display:flex;
   justify-content:space-between;
 }
 
-/* ITEM */
 
 .legend-item{
   display:flex;
@@ -253,7 +218,6 @@ font-size: 15px;
   gap:16px;
 }
 
-/* COLOR BOX */
 
 .legend-box{
   width:50px;
@@ -273,7 +237,6 @@ font-size: 15px;
   background:#f59e0b;
 }
 
-/* TEXT */
 
 .legend-name{
   font-size:16px;

@@ -16,7 +16,7 @@ export default function ReservationSuccess() {
   }, [data, navigate]);
 
   return (
-    <div className="success-page">
+    <div className="success-pages">
       <div className="top-banner">✔ Reservation submitted successfully!</div>
 
       <div className="success-card">

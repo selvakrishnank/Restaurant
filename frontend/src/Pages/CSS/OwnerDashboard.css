@@ -1,4 +1,4 @@
-/* PAGE */
+
 .dashboard {
   background: #f6f7fb;
   min-height: 100vh;
@@ -6,7 +6,6 @@
   font-family: "Inter", sans-serif;
 }
 
-/* HEADER BAR */
 .dashboard-header {
   display: flex;
   justify-content: space-between;
@@ -17,7 +16,6 @@
   border-bottom: 1px solid #e5e7eb;
 }
 
-/* LEFT SIDE */
 .header-left {
   display: flex;
   align-items: center;
@@ -27,14 +25,12 @@
   margin-right: 50px;
 }
 
-/* ICON */
 .icon {
   font-size: 22px;
-  color: #ef4444; /* red like figma */
+  color: #ef4444; 
   padding-right: 200px;
 }
 
-/* TITLE */
 .header-left h2 {
   margin: 0;
   font-size: 20px;
@@ -42,14 +38,12 @@
   color: #111827;
 }
 
-/* SUBTITLE */
 .header-left p {
   margin: 0;
   font-size: 13px;
   color: #6b7280;
 }
 
-/* LOGOUT BUTTON */
 .logout-btn {
   background: #fff;
   border: 1px solid #e5e7eb;
@@ -63,15 +57,11 @@
   gap: 6px;
 }
 
-/* HOVER */
 .logout-btn:hover {
   background: #f9fafb;
 }
 
-/* ===================== */
-/* TOP STATS */
-/* ===================== */
-.stats-grid {
+.stats-grids {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 20px;
@@ -79,36 +69,32 @@
   margin-top: 20px;
 }
 
-.stat-card {
+.stats-cards {
   background: #fff;
   padding: 18px 20px;
   border-radius: 14px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.04);
 }
 
-.stat-card h4 {
+.stats-cards h4 {
   font-size: 13px;
   color: #6b7280;
   font-weight: 500;
 }
 
-.stat-card h2 {
+.stats-cards h2 {
   font-size: 20px;
   margin-top: 6px;
   font-weight: 600;
   color: #111827;
 }
 
-/* ===================== */
-/* GRID */
-/* ===================== */
 .dashboard-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 20px;
 }
 
-/* CARD */
 .dashboard-card {
   background: #fff;
   padding: 20px;
@@ -123,9 +109,6 @@
   color: #111827;
 }
 
-/* ===================== */
-/* PROGRESS */
-/* ===================== */
 .progress-row {
   margin-bottom: 18px;
 }
@@ -138,7 +121,6 @@
   margin-bottom: 6px;
 }
 
-/* 🔥 FIXED THIN BAR */
 .progress-bar {
   height: 5px;
   background: #e5e7eb;
@@ -156,12 +138,9 @@
   background: #000;
 }
 
-/* ===================== */
-/* TOP ITEMS */
-/* ===================== */
 .list-item {
   display: flex;
-  justify-content: space-between;  /* 🔥 important */
+  justify-content: space-between; 
   align-items: center;
   background: #f9fafb;
   padding: 8px;
@@ -171,7 +150,7 @@
 .lefts {
   display: flex;
   align-items: center;
-  gap: 16px;   /* more space like design */
+  gap: 16px;   
 }
 
 .rank {
@@ -185,7 +164,7 @@
   justify-content: center;
 
   font-weight: 600;
-  color: #f97316;   /* orange number like figma */
+  color: #f97316;   
 }
 
 .item-info p {
@@ -201,7 +180,7 @@
 }
 
 .price {
-  position: static !important;   /* 🔥 FORCE FIX */
+  position: static !important;   
   color: #16a34a;
   font-weight: 600;
   font-size: 1px;
@@ -209,12 +188,6 @@
   text-align: right;        
 }
 
-
-
-
-/* ===================== */
-/* STAFF */
-/* ===================== */
 .staff-item {
   display: flex;
   align-items: center;
@@ -242,7 +215,6 @@
   font-weight: 600;
 }
 
-/* BADGES */
 .badge {
   padding: 4px 10px;
   border-radius: 12px;
@@ -265,7 +237,6 @@
   color: #374151;
 }
 
-/* MENU PERFORMANCE */
 .menu-performance {
   margin-top: 20px;
   background: #fff;
@@ -280,21 +251,18 @@
   font-weight: 600;
 }
 
-/* GRID */
 .menu-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 16px;
 }
 
-/* CARD */
 .menu-card {
   padding: 18px;
   border-radius: 14px;
   font-weight: 500;
 }
 
-/* COLORS (match figma) */
 .menu-card.starters {
   background: #dbeafe;
   color: #1d4ed8;

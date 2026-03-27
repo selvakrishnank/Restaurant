@@ -1,0 +1,41 @@
+.split-container {
+  width: 1400px;
+  margin: auto;
+  padding: 20px;
+}
+
+.people-box input {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+}
+
+.item-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+}
+
+.total-box {
+  margin-top: 20px;
+}
+
+.split-result {
+  margin-top: 30px;
+  text-align: center;
+  background: black;
+  padding: 20px;
+  border-radius: 10px; 
+}
+
+.split-result h2{
+    color: white;
+}
+
+h2{
+    color: #333;
+}
+
+.items-boxs{
+    color: #333;
+}

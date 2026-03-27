@@ -89,7 +89,7 @@
   margin-bottom:30px;
 }
 
-.stat-card{
+.stat-cards{
   background:white;
   border:1px solid #e5e7eb;
   border-radius:14px;
@@ -107,6 +107,10 @@
 .stat-number{
   font-size:26px;
   font-weight:600;
+  color: #000;
+  margin-bottom: 10px;
+  padding-left: 10px;
+  padding-top: -20px;
 }
 
 

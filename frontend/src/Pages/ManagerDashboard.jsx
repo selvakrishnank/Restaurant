@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./CSS/ManagerDashboard.css";
 import EditMenuModal from "../components/EditMenuModal/EditMenuModal";
 import AddMenuModal from "../components/AddMenuModal/AddMenuModal";
+import { getReservedTables } from "../api/tableApi";
 import { useNavigate } from "react-router-dom";
 
 import {
@@ -19,6 +20,7 @@ import {
   FaChartLine,
   FaUtensils,
   FaCalendarAlt,
+  FaChair,
 } from "react-icons/fa";
 
 export default function ManagerDashboard() {
@@ -26,6 +28,7 @@ export default function ManagerDashboard() {
   const [orders, setOrders] = useState([]);
   const [menuItems, setMenuItems] = useState([]);
   const [selectedItem, setSelectedItem] = useState(null);
+  const [reservedTables, setReservedTables] = useState([]);
   const navigate = useNavigate();
 
   const [selectedCategory, setSelectedCategory] = useState("All");
@@ -47,7 +50,20 @@ export default function ManagerDashboard() {
 
   useEffect(() => {
     loadData();
+    loadReservedTables();
+
+    const interval = setInterval(() => {
+      loadData();
+      loadReservedTables();
+    }, 5000); 
+
+    return () => clearInterval(interval);
   }, []);
+
+  const loadReservedTables = async () => {
+    const data = await getReservedTables();
+    setReservedTables(data || []);
+  };
 
   const handleToggle = async (id) => {
     try {
@@ -106,7 +122,7 @@ export default function ManagerDashboard() {
 
       <hr />
 
-      <div className="stats">
+      <div className="stats1">
         <div className="cards stats-card">
           <div>
             <h4>Total Orders</h4>
@@ -162,6 +178,13 @@ export default function ManagerDashboard() {
           <div className="quick-card" onClick={() => navigate("/catering")}>
             <FaDollarSign />
             <span>Catering</span>
+          </div>
+          <div
+            className="quick-card"
+            onClick={() => navigate("/reservedtables")}
+          >
+            <FaChair />
+            <span> Reserved Tables</span>
           </div>
         </div>
       </div>

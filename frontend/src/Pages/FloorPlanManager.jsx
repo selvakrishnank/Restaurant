@@ -18,7 +18,6 @@ export default function FloorPlanManager() {
     try {
       const res = await fetch(url);
       const data = await res.json();
-
       setTables(data);
     } catch (error) {
       console.log("Error loading tables", error);
@@ -27,28 +26,26 @@ export default function FloorPlanManager() {
 
   useEffect(() => {
     loadTables();
+
+    const interval = setInterval(() => {
+      loadTables();
+    }, 3000); 
+
+    return () => clearInterval(interval);
   }, [zone]);
 
+  
   const changeStatus = async (id) => {
-    await fetch(`http://127.0.0.1:8000/api/tables/update/${id}/`, {
-      method: "PATCH",
-    });
+    try {
+      await fetch(`http://127.0.0.1:8000/api/tables/update/${id}/`, {
+        method: "PATCH",
+      });
 
-    setTables((prevTables) =>
-      prevTables.map((table) => {
-        if (table.id === id) {
-          let newStatus = "available";
-
-          if (table.status === "available") newStatus = "occupied";
-          else if (table.status === "occupied") newStatus = "reserved";
-          else newStatus = "available";
-
-          return { ...table, status: newStatus };
-        }
-
-        return table;
-      }),
-    );
+     
+      loadTables();
+    } catch (error) {
+      console.error("Update error:", error);
+    }
   };
 
   const total = tables.length;
@@ -64,7 +61,6 @@ export default function FloorPlanManager() {
       </div>
 
       <h2>Floor Plan Manager</h2>
-
       <p className="subtitle">Visual table layout and status management</p>
 
       <div className="stats">
@@ -127,9 +123,7 @@ export default function FloorPlanManager() {
             onClick={() => changeStatus(table.id)}
           >
             <h4>{table.name}</h4>
-
             <p>{table.seats} 👥</p>
-
             <span>{table.zone}</span>
           </div>
         ))}
@@ -141,7 +135,6 @@ export default function FloorPlanManager() {
         <div className="legend-items">
           <div className="legend-item">
             <div className="legend-box green"></div>
-
             <div>
               <p className="legend-name">Available</p>
               <p className="legend-desc">Ready for seating</p>
@@ -150,7 +143,6 @@ export default function FloorPlanManager() {
 
           <div className="legend-item">
             <div className="legend-box red"></div>
-
             <div>
               <p className="legend-name">Occupied</p>
               <p className="legend-desc">Customers dining</p>
@@ -159,7 +151,6 @@ export default function FloorPlanManager() {
 
           <div className="legend-item">
             <div className="legend-box yellow"></div>
-
             <div>
               <p className="legend-name">Reserved</p>
               <p className="legend-desc">Booking confirmed</p>

@@ -7,16 +7,26 @@ export default function OwnerDashboard() {
   const [data, setData] = useState(null);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    loadData();
-  }, []);
-
-  const loadData = async () => {
-    const res = await getDashboard();
-    setData(res);
+  const loadDashboard = async () => {
+    try {
+      const res = await getDashboard();
+      setData(res);
+    } catch (error) {
+      console.error("Dashboard load error:", error);
+    }
   };
 
-  if (!data) return <p>Loading...</p>;
+  useEffect(() => {
+    loadDashboard();
+
+    const interval = setInterval(() => {
+      loadDashboard();
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  if (!data) return <p>Loading dashboard...</p>;
 
   return (
     <div className="dashboard">
@@ -35,23 +45,23 @@ export default function OwnerDashboard() {
         </button>
       </div>
 
-      <div className="stats-grid">
-        <div className="stat-card">
+      <div className="stats-grids">
+        <div className="stats-cards">
           <h4>Total Revenue</h4>
           <h2>${Number(data.total_revenue).toFixed(2)}</h2>
         </div>
 
-        <div className="stat-card">
+        <div className="stats-cards">
           <h4>Total Orders</h4>
           <h2>{data.total_orders}</h2>
         </div>
 
-        <div className="stat-card">
+        <div className="stats-cards">
           <h4>Avg Order Value</h4>
           <h2>${Number(data.avg_order_value).toFixed(2)}</h2>
         </div>
 
-        <div className="stat-card">
+        <div className="stats-cards">
           <h4>Active Staff</h4>
           <h2>{data.staff_count}</h2>
         </div>

@@ -126,7 +126,7 @@ export default function ShiftManagement() {
       </div>
 
       <div className="shift-stats">
-        <div className="stat-card">
+        <div className="stat-cards">
           <div className="stat-icon blue">
             <FaUsers />
           </div>

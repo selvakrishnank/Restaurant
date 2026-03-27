@@ -23,7 +23,7 @@ class PlaceOrderView(APIView):
         if not table_number:
             return Response({"error": "Table number required"}, status=400)
 
-        cart, created = Cart.objects.get_or_create(user=request.user)
+        cart, _ = Cart.objects.get_or_create(user=request.user)
         cart_items = cart.items.select_related("menu_item")
 
         if not cart_items.exists():
@@ -37,35 +37,52 @@ class PlaceOrderView(APIView):
         tax = subtotal * Decimal("0.10")
         total = subtotal + tax
 
-        order = Order.objects.create(
-            user=request.user,
-            name=name,
+        existing_order = Order.objects.filter(
             table_number=table_number,
-            subtotal=subtotal,
-            tax=tax,
-            total=total,
-            status="received"
-        )
+            status__in=["received", "preparing", "ready", "served"]
+        ).first()
 
-        try:
-            table = Table.objects.get(id=table_number)
-            table.status = "occupied"
-            table.save()
-        except Table.DoesNotExist:
-            print("Table not found")
+        if existing_order:
+            order = existing_order
+
+            if order.status in ["served", "ready"]:
+                order.status = "received"
+
+            order.subtotal += subtotal
+            order.tax += tax
+            order.total += total
+            order.save()
+
+        else:
+            order = Order.objects.create(
+                user=request.user,
+                name=name,
+                table_number=table_number,
+                subtotal=subtotal,
+                tax=tax,
+                total=total,
+                status="received"
+            )
+
+            try:
+                table = Table.objects.get(id=table_number)
+                table.status = "occupied"
+                table.save()
+            except Table.DoesNotExist:
+                pass
 
         for item in cart_items:
             OrderItem.objects.create(
                 order=order,
                 menu_item=item.menu_item,
                 quantity=item.quantity,
-                price=item.menu_item.price
+                price=item.menu_item.price,
+                status="pending"
             )
 
         cart_items.delete()
 
-        serializer = OrderSerializer(order)
-        return Response(serializer.data)
+        return Response(OrderSerializer(order).data)
 
 
 class CurrentOrderView(APIView):
@@ -82,8 +99,7 @@ class CurrentOrderView(APIView):
         if not order:
             return Response({"message": "No orders found"})
 
-        serializer = OrderSerializer(order)
-        return Response(serializer.data)
+        return Response(OrderSerializer(order).data)
 
 
 class OrderHistoryView(APIView):
@@ -97,8 +113,7 @@ class OrderHistoryView(APIView):
             user=request.user
         ).order_by("-created_at")
 
-        serializer = OrderSerializer(orders, many=True)
-        return Response(serializer.data)
+        return Response(OrderSerializer(orders, many=True).data)
 
 
 class KitchenOrdersView(APIView):
@@ -106,11 +121,14 @@ class KitchenOrdersView(APIView):
     def get(self, request):
 
         orders = Order.objects.filter(
-            status__in=["received", "preparing"]
-        ).order_by("-created_at")
+            items__status__in=["pending", "preparing"]  
+        ).exclude(
+            status="paid"   
+        ).distinct().order_by("-created_at")
 
-        serializer = OrderSerializer(orders, many=True)
+        serializer = OrderSerializer(orders,many=True,context={"request": request})
         return Response(serializer.data)
+
 
 
 class UpdateOrderStatusView(APIView):
@@ -127,8 +145,26 @@ class UpdateOrderStatusView(APIView):
         order.status = status_value
         order.save()
 
+        if status_value == "preparing":
+            OrderItem.objects.filter(
+                order=order,
+                status="pending"
+            ).update(status="preparing")
+
+        elif status_value == "ready":
+            OrderItem.objects.filter(
+                order=order,
+                status="preparing"
+            ).update(status="ready")
+
+        elif status_value == "served":
+            OrderItem.objects.filter(
+                order=order,
+                status="ready"
+            ).update(status="served")
+
         return Response({
-            "message": "Order updated",
+            "message": "Order & items updated",
             "status": order.status
         })
 
@@ -138,11 +174,10 @@ class ReadyToServeOrdersView(APIView):
     def get(self, request):
 
         orders = Order.objects.filter(
-            status="ready"
-        ).order_by("-created_at")
+            items__status="ready"
+        ).distinct().order_by("-created_at")
 
-        serializer = OrderSerializer(orders, many=True)
-        return Response(serializer.data)
+        return Response(OrderSerializer(orders, many=True, context={"request": request}).data)
 
 
 class AwaitingPaymentOrdersView(APIView):
@@ -153,8 +188,7 @@ class AwaitingPaymentOrdersView(APIView):
             status="served"
         ).order_by("-created_at")
 
-        serializer = OrderSerializer(orders, many=True)
-        return Response(serializer.data)
+        return Response(OrderSerializer(orders, many=True, context={"request": request}).data)
 
 
 class CompletePaymentView(APIView):
@@ -169,12 +203,14 @@ class CompletePaymentView(APIView):
         order.status = "paid"
         order.save()
 
+        OrderItem.objects.filter(order=order).update(status="served")
+
         try:
-            table = Table.objects.get(id=order.table_number) 
+            table = Table.objects.get(id=order.table_number)
             table.status = "available"
             table.save()
         except Table.DoesNotExist:
-            print("Table not found")
+            pass
 
         return Response({
             "message": "Payment completed & table freed",
@@ -190,5 +226,4 @@ class ActiveTablesView(APIView):
             status="paid"
         ).order_by("-created_at")
 
-        serializer = OrderSerializer(orders, many=True)
-        return Response(serializer.data)
+        return Response(OrderSerializer(orders, many=True).data)

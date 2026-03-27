@@ -6,7 +6,7 @@ font-family:system-ui;
 width: 1360px;
 }
 
-/* header */
+
 
 .inventory-header{
 display:flex;
@@ -54,7 +54,6 @@ font-weight:500;
 color:#111827;
 }
 
-/* stats */
 
 .inventory-stats{
 display:grid;
@@ -85,14 +84,10 @@ font-size:26px;
 font-weight:700;
 }
 
-/* icons */
-
-.icon{
+.icon1{
 font-size:26px;
 }
 
-
-/* inventory list */
 
 .inventory-list{
 background:white;
@@ -127,8 +122,6 @@ gap:10px;
 font-size:18px;
 color:#9ca3af;
 }
-
-/* add first button */
 
 .add-first-btn{
 margin-top:10px;
@@ -187,14 +180,12 @@ cursor:pointer;
   margin-top: 16px;
 }
 
-/* LEFT SECTION */
 .item-left {
   display: flex;
   flex-direction: column;
   gap: 6px;
 }
 
-/* NAME + BADGE */
 .item-header {
   display: flex;
   align-items: center;
@@ -208,7 +199,6 @@ cursor:pointer;
   margin: 0;
 }
 
-/* STOCK BADGE */
 .stock-badge {
   background: #22c55e;
   color: white;
@@ -217,7 +207,6 @@ cursor:pointer;
   border-radius: 999px;
 }
 
-/* TEXT STYLE */
 .inventory-item p {
   margin: 2px 0;
   color: #475569;
@@ -228,7 +217,6 @@ cursor:pointer;
   color: #111827;
 }
 
-/* BUTTON AREA */
 .stock-buttons {
   display: flex;
   gap: 10px;

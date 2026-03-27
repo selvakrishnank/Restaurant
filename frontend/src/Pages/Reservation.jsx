@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./CSS/Reservation.css";
 
 export default function Reservation() {
@@ -12,8 +12,23 @@ export default function Reservation() {
   const [number_of_guests, setGuests] = useState(2);
   const [special_requests, setRequests] = useState("");
 
+  const [tables, setTables] = useState([]);
+  const [tableId, setTableId] = useState("");
+
+  useEffect(() => {
+    fetch("http://127.0.0.1:8000/api/tables/")
+      .then((res) => res.json())
+      .then((data) => setTables(data))
+      .catch((err) => console.error("Table load error:", err));
+  }, []);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (!tableId) {
+      alert("Please select a table ❗");
+      return;
+    }
 
     const data = {
       full_name,
@@ -22,6 +37,7 @@ export default function Reservation() {
       time,
       number_of_guests,
       special_requests,
+      table: tableId,
     };
 
     try {
@@ -64,7 +80,7 @@ export default function Reservation() {
         <div className="reservation-content">
           <div className="reservation-card">
             <h2>Make a Reservation</h2>
-            <p className="subtitle">Reserve your table at Eatrova</p>
+            <p className="new-subtitle">Reserve your table at Eatrova</p>
 
             <form onSubmit={handleSubmit}>
               <div className="form-row">
@@ -89,7 +105,7 @@ export default function Reservation() {
                     type="text"
                     value={phone_number}
                     onChange={(e) => setPhoneNumber(e.target.value)}
-                    placeholder="999-999-9999"
+                    placeholder="9999999999"
                     pattern="[6-9]{1}[0-9]{9}"
                     maxLength="10"
                     required
@@ -121,6 +137,24 @@ export default function Reservation() {
                     required
                   />
                 </div>
+              </div>
+
+              <div className="form-group">
+                <label>
+                  <b>Select Table *</b>
+                </label>
+                <select
+                  value={tableId}
+                  onChange={(e) => setTableId(e.target.value)}
+                >
+                  <option value="">Select Table</option>
+
+                  {tables.map((table) => (
+                    <option key={table.id} value={table.id}>
+                      {table.name} ({table.status})
+                    </option>
+                  ))}
+                </select>
               </div>
 
               <div className="form-group">

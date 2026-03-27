@@ -31,9 +31,7 @@
   cursor: pointer;
 }
 
-/* STATS GRID */
-
-.stats{
+.stats1{
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 54px;
@@ -106,15 +104,11 @@
   cursor: pointer;
 }
 
-/* CATEGORY TABS */
-
 .menu-tabs{
   display:flex;
   gap:10px;
   margin-top:15px;
 }
-
-/* Normal button */
 
 .menu-tabs button{
   padding:8px 16px;
@@ -126,8 +120,6 @@
   transition:0.2s;
   outline: none;
 }
-
-/* Active button (selected category) */
 
 .menu-tabs button.active-tab{
   background:#7c3aed;

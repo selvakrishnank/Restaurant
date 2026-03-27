@@ -6,7 +6,7 @@
   width: 1450px;
 }
 
-/* 🔥 HEADER */
+
 .kds-header {
   display: flex;
   justify-content: space-between;
@@ -45,7 +45,7 @@
   cursor: pointer;
 }
 
-/* 🔥 GRID */
+
 .orders-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 380px));
@@ -54,14 +54,14 @@
   padding: 40px;
 }
 
-/* 🔥 CARD */
+
 .ordercard {
-  width: 320px;                 /* ✅ narrow like design */
-  background: #e5e7eb;          /* ✅ light grey */
+  width: 320px;                
+  background: #e5e7eb;          
   border-radius: 24px;
   padding: 20px;
 
-  border: 2px solid orange;     /* ✅ highlight border */
+  border: 2px solid orange;     
   box-shadow: none;
 }
 
@@ -96,7 +96,7 @@
   color: #94a3b8;
 }
 
-/* 🔥 BADGE */
+
 .badge {
   padding: 5px 12px;
   border-radius: 999px;
@@ -119,7 +119,6 @@
   background: #ef4444;
 }
 
-/* 🔥 ITEMS */
 .order-items {
   margin-top: -20px;
   margin-bottom: -20px;
@@ -151,7 +150,6 @@
   color: #94a3b8;
 }
 
-/* 🔥 BUTTON */
 .start-btn {
   width: 100%;
   margin-top: 15px;
@@ -180,7 +178,6 @@
   cursor: pointer;
 }
 
-/* 🔥 POPUP */
 .success-popup {
   position: fixed;
   top: 70px;

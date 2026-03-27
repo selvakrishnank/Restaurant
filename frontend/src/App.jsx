@@ -17,6 +17,8 @@ import ShiftManagement from "./Pages/ShiftManagement";
 import FloorPlanManager from "./Pages/FloorPlanManager";
 import InventoryManager from "./Pages/InventoryManager";
 import CateringServices from "./Pages/CateringServices";
+import SplitBillPage from "./Pages/SplitBillPage";
+import ReservedTablesPage from "./Pages/ReservedTablesPage";
 
 export default function App() {
   const [cart, setCart] = useState([]);
@@ -29,15 +31,9 @@ export default function App() {
 
         <Route path="/signup" element={<Signup />} />
 
-        <Route
-          path="/home"
-          element={<Home cart={cart} setCart={setCart} />}
-        />
+        <Route path="/home" element={<Home cart={cart} setCart={setCart} />}/>
 
-        <Route
-          path="/cart"
-          element={<CartPage cart={cart} setCart={setCart} />}
-        />
+        <Route path="/cart" element={<CartPage cart={cart} setCart={setCart} />}/>
 
         <Route path="/kitchen" element={<KitchenDisplay />} />
 
@@ -49,10 +45,7 @@ export default function App() {
 
         <Route path="/reserve" element={<Reservation />} />
 
-        <Route
-          path="/reservation-success"
-          element={<ReservationSuccess />}
-        />
+        <Route path="/reservation-success" element={<ReservationSuccess />}/>
 
         <Route path="/order-success" element={<OrderSuccess />} />
 
@@ -66,10 +59,12 @@ export default function App() {
 
         <Route path="/catering" element={<CateringServices />} />
 
+        <Route path="/splitbill" element={<SplitBillPage />} />
 
-        <Route
-          path="*"
-          element={<h2 style={{ textAlign: "center" }}>Page Not Found</h2>}
+        <Route path="/reservedtables" element={<ReservedTablesPage />} />
+
+
+        <Route path="*" element={<h2 style={{ textAlign: "center" }}>Page Not Found</h2>}
         />
 
       </Routes>

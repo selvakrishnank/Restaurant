@@ -39,3 +39,20 @@ class UpdateTableStatusView(APIView):
         table.save()
 
         return Response({"message": "status updated"})
+    
+
+class ReservedTablesView(APIView):
+
+    def get(self, request):
+        tables = Table.objects.filter(status="reserved")
+        
+        data = [
+            {
+                "id": table.id,
+                "name": table.name,
+                "status": table.status
+            }
+            for table in tables
+        ]
+
+        return Response(data)    

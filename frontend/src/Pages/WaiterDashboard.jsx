@@ -54,6 +54,12 @@ export default function WaiterDashboard() {
 
   useEffect(() => {
     loadOrders();
+
+    const interval = setInterval(() => {
+      loadOrders();
+    }, 3000);
+
+    return () => clearInterval(interval);
   }, []);
 
   const activeTablesCount = activeTables.length;
@@ -89,7 +95,7 @@ export default function WaiterDashboard() {
             <p>Awaiting Payment</p>
             <h3>{awaitingPayments.length}</h3>
           </div>
-          <span className="icon ">
+          <span className="icon">
             <img src={debitIcon} alt="" />
           </span>
         </div>
@@ -99,7 +105,7 @@ export default function WaiterDashboard() {
             <p>Active Tables</p>
             <h3>{activeTablesCount}</h3>
           </div>
-          <span className="icon ">
+          <span className="icon">
             <img src={knifeIcon} alt="" />
           </span>
         </div>
@@ -119,7 +125,6 @@ export default function WaiterDashboard() {
               <div key={order.id} className="order-cards">
                 <div className="order-header">
                   <h3>ORD-{order.id}</h3>
-
                   <span className="ready-badge">Ready</span>
                 </div>
 
@@ -129,7 +134,6 @@ export default function WaiterDashboard() {
                   {(order.items || []).map((item, i) => (
                     <div key={i} className="item-row">
                       <p>{item.name}</p>
-
                       <span>Quantity: {item.quantity}</span>
                     </div>
                   ))}
@@ -137,8 +141,7 @@ export default function WaiterDashboard() {
 
                 <div className="total-row">
                   <p>Total Amount</p>
-
-                  <span>${order.total}</span>
+                  <span>${Number(order.total).toFixed(2)}</span>
                 </div>
 
                 <button
@@ -162,9 +165,9 @@ export default function WaiterDashboard() {
             <div className="empty-box">No pending payments</div>
           ) : (
             awaitingPayments.map((order) => {
-              const subtotal = Number(order.total) || 0;
-              const tax = subtotal * 0.1;
-              const total = subtotal + tax;
+              const subtotal = Number(order.subtotal || order.total) || 0;
+              const tax = Number(order.tax || subtotal * 0.1);
+              const total = Number(order.total) || subtotal + tax;
 
               return (
                 <div key={order.id} className="billing-card">
@@ -173,11 +176,23 @@ export default function WaiterDashboard() {
                       <h3>ORD-{order.id}</h3>
                       <p>Table {order.table_number}</p>
                     </div>
-
                     <span className="billing-tag">Billing</span>
                   </div>
 
                   <div className="billing-box">
+                    <div className="orders-items">
+                      {(order.items || []).map((item, index) => (
+                        <div key={index} className="order-item-row">
+                          <span>
+                            {item.name} x {item.quantity}
+                          </span>
+                          <span>${Number(item.total_price).toFixed(2)}</span>
+                        </div>
+                      ))}
+                    </div>
+
+                    <hr />
+
                     <div className="bill-row">
                       <span>Subtotal</span>
                       <span>${subtotal.toFixed(2)}</span>
@@ -219,7 +234,6 @@ export default function WaiterDashboard() {
             <div key={order.id} className="table-card">
               <div className="table-header">
                 <h4>Table {order.table_number}</h4>
-
                 <span className="status-badges">{order.status}</span>
               </div>
 

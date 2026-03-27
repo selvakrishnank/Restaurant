@@ -12,15 +12,25 @@ function OrderTracking() {
   const token = localStorage.getItem("access");
 
   const loadOrders = async () => {
-    const current = await getCurrentOrder(token);
-    const history = await getOrderHistory(token);
+    try {
+      const current = await getCurrentOrder(token);
+      const history = await getOrderHistory(token);
 
-    setCurrentOrder(current);
-    setPreviousOrders(history);
+      setCurrentOrder(current);
+      setPreviousOrders(history);
+    } catch (error) {
+      console.error("Order load error:", error);
+    }
   };
 
   useEffect(() => {
     loadOrders();
+
+    const interval = setInterval(() => {
+      loadOrders();
+    }, 3000);
+
+    return () => clearInterval(interval);
   }, []);
 
   if (!currentOrder) return <p>Loading...</p>;
@@ -39,7 +49,6 @@ function OrderTracking() {
         <div className="order-top">
           <div>
             <h3>Current Order - ORD-{currentOrder.id}</h3>
-
             <p className="table-info">Table {currentOrder.table_number}</p>
           </div>
 
@@ -47,30 +56,22 @@ function OrderTracking() {
         </div>
 
         <div className="progress-container">
-          <div
-            className={`step ${currentOrder.status === "received" ? "active" : ""}`}
-          >
+          <div className={`step ${currentOrder.status === "received" ? "active" : ""}`}>
             <div className="circle">⏱</div>
             <p>Order Received</p>
           </div>
 
-          <div
-            className={`step ${currentOrder.status === "preparing" ? "active" : ""}`}
-          >
+          <div className={`step ${currentOrder.status === "preparing" ? "active" : ""}`}>
             <div className="circle">👨‍🍳</div>
             <p>Being Prepared</p>
           </div>
 
-          <div
-            className={`step ${currentOrder.status === "ready" ? "active" : ""}`}
-          >
+          <div className={`step ${currentOrder.status === "ready" ? "active" : ""}`}>
             <div className="circle">🍽</div>
             <p>Ready to Serve</p>
           </div>
 
-          <div
-            className={`step ${currentOrder.status === "served" ? "active" : ""}`}
-          >
+          <div className={`step ${currentOrder.status === "served" ? "active" : ""}`}>
             <div className="circle">✓</div>
             <p>Served</p>
           </div>
@@ -86,7 +87,6 @@ function OrderTracking() {
               <div key={index} className="item-row">
                 <div className="item-left">
                   <p>{item.name}</p>
-
                   <span>Qty: {item.quantity}</span>
                 </div>
 
@@ -100,7 +100,6 @@ function OrderTracking() {
 
         <div className="total">
           <p>Total Amount</p>
-
           <p className="total-price">
             ${(Number(currentOrder.total) || 0).toFixed(2)}
           </p>
@@ -113,15 +112,12 @@ function OrderTracking() {
         <div className="previous-card" key={order.id}>
           <div>
             <h4>ORD-{order.id}</h4>
-
             <p>Table {order.table_number}</p>
-
             <span>{order.items.length} item(s)</span>
           </div>
 
           <div className="prev-right">
             <span className="status-badge">{order.status}</span>
-
             <p>${(Number(order.total) || 0).toFixed(2)}</p>
           </div>
         </div>

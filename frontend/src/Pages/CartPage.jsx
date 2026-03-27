@@ -83,7 +83,7 @@ export default function CartPage({ cart, setCart }) {
       navigate("/order-success");
     } catch (error) {
       console.error("Order error:", error);
-      alert("Failed to place order");
+      alert("Failed to place order ❌");
     }
   };
 
@@ -165,13 +165,11 @@ export default function CartPage({ cart, setCart }) {
             >
               <option value="">Select Table</option>
 
-              {tables
-                .filter((table) => table.status === "available")
-                .map((table) => (
-                  <option key={table.id} value={table.id}>
-                    {table.name}
-                  </option>
-                ))}
+              {tables.map((table) => (
+                <option key={table.id} value={table.id}>
+                  {table.name} ({table.status})
+                </option>
+              ))}
             </select>
           </div>
 
@@ -194,7 +192,12 @@ export default function CartPage({ cart, setCart }) {
             Place Order
           </button>
 
-          <button className="split-btn">Split Bill</button>
+          <button
+            className="split-btn"
+            onClick={() => navigate("/splitbill", { state: { cart } })}
+          >
+            Split Bill
+          </button>
 
           <p className="note">Your order will be prepared fresh by our chefs</p>
         </div>

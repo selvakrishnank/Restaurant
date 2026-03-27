@@ -80,7 +80,7 @@ export default function InventoryManager() {
               <p>Total Items</p>
               <h3>{total}</h3>
             </div>
-            <span className="icon">📦</span>
+            <span className="icon1">📦</span>
           </div>
 
           <div className="card">
@@ -88,7 +88,7 @@ export default function InventoryManager() {
               <p>Low Stock</p>
               <h3>{lowStock}</h3>
             </div>
-            <span className="icon">📉</span>
+            <span className="icon1">📉</span>
           </div>
 
           <div className="card">
@@ -96,7 +96,7 @@ export default function InventoryManager() {
               <p>Out of Stock</p>
               <h3>{outOfStock}</h3>
             </div>
-            <span className="icon">⚠️</span>
+            <span className="icon1">⚠️</span>
           </div>
 
           <div className="card">
@@ -104,7 +104,7 @@ export default function InventoryManager() {
               <p>Well Stocked</p>
               <h3>{wellStocked}</h3>
             </div>
-            <span className="icon">📈</span>
+            <span className="icon1">📈</span>
           </div>
         </div>
 

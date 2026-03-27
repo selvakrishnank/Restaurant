@@ -2,37 +2,49 @@
   max-width: 1400px;
   margin-left: 100px;
   padding: 0 60px;
-  
+
+  overflow-x: hidden; 
 }
 
-/* Tablet */
+
 @media (max-width: 1024px) {
   .page {
     padding: 14px;
+    margin-left: 0; 
   }
 }
 
-/* Mobile */
+
 @media (max-width: 768px) {
   .page {
     padding: 12px;
+    margin-left: 0;
   }
 }
+
+html {
+  overflow-y: scroll; 
+}
+
 
 .food-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 24px;
+
+  min-height: 60vh;        
+  align-content: start;    
+  transition: all 0.3s ease; 
 }
 
-/* Tablet */
+
 @media (max-width: 1024px) {
   .food-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
-/* Mobile */
+
 @media (max-width: 768px) {
   .food-grid {
     grid-template-columns: 1fr;

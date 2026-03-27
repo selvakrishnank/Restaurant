@@ -1,4 +1,5 @@
 from django.db import models
+from tables.models import Table
 
 class Reservation(models.Model):
     full_name = models.CharField(max_length=150)
@@ -8,6 +9,7 @@ class Reservation(models.Model):
     number_of_guests = models.PositiveIntegerField()
     special_requests = models.TextField(blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
+    table = models.ForeignKey(Table, on_delete=models.CASCADE)
 
     def __str__(self):
         return f"{self.full_name} - {self.date} {self.time}"
